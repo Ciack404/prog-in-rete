@@ -232,10 +232,9 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
         if(!this.isBoxEmpty()){
             int i = 0;
             int len = this.getBox().size();
-            while(found && i<len){
+            while(!found && i<len){
                 if(this.getBox().get(i).getSender().equals(age)){
                     found=true;
-                    i=len;
                 }
                 else    i++;
             }
@@ -249,10 +248,9 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
         if(!this.isBoxEmpty()){
             int i = 0;
             int len = this.getBox().size();
-            while(found && i<len){
+            while(!found && i<len){
                 if(this.getBox().get(i).getSender().getCategory().equals(cat)){
                     found=true;
-                    i=len;
                 }
                 else    i++;
             }
@@ -266,10 +264,9 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
         if(!this.isBoxEmpty()){
             int i = 0;
             int len = this.getBox().size();
-            while(found && i<len){
+            while(!found && i<len){
                 if(this.getBox().get(i).getPerformative().equals(per)){
                     found=true;
-                    i=len;
                 }
                 else    i++;
             }
@@ -283,10 +280,9 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
         if(!this.isBoxEmpty()){
             int i = 0;
             int len = this.getBox().size();
-            while(found && i<len){
+            while(!found && i<len){
                 if(this.getBox().get(i).getSender().equals(age) && this.getBox().get(i).getPerformative().equals(per)){
                     found=true;
-                    i=len;
                 }
                 else    i++;
             }
@@ -300,10 +296,9 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
         if(!this.isBoxEmpty()){
             int i = 0;
             int len = this.getBox().size();
-            while(found && i<len){
+            while(!found && i<len){
                 if(this.getBox().get(i).getSender().equals(age) && this.getBox().get(i).getPerformative().equals(per) && this.getBox().get(i).getSender().getCategory().equals(cat)){
                     found=true;
-                    i=len;
                 }
                 else    i++;
             }
