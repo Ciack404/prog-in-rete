@@ -227,6 +227,12 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
         else return false;
     }
 
+    /**
+     *
+     * @param age
+     * @return
+     * @throws JAMMessageBoxException
+     */
     public boolean isThereMessage(AgentID age) throws JAMMessageBoxException {
         boolean found = false;
         if(!this.isBoxEmpty()){
@@ -242,7 +248,12 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
         return found;
     }
 
-
+    /**
+     *
+     * @param cat
+     * @return
+     * @throws JAMMessageBoxException
+     */
     public boolean isThereMessage(String cat) throws JAMMessageBoxException {
         boolean found = false;
         if(!this.isBoxEmpty()){
@@ -258,7 +269,12 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
         return found;
     }
 
-
+    /**
+     *
+     * @param per
+     * @return
+     * @throws JAMMessageBoxException
+     */
     public boolean isThereMessage(Performative per) throws JAMMessageBoxException {
         boolean found = false;
         if(!this.isBoxEmpty()){
@@ -274,7 +290,13 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
         return found;
     }
 
-
+    /**
+     *
+     * @param age
+     * @param per
+     * @return
+     * @throws JAMMessageBoxException
+     */
     public boolean isThereMessage(AgentID age,Performative per) throws JAMMessageBoxException {
         boolean found = false;
         if(!this.isBoxEmpty()){
@@ -290,7 +312,14 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
         return found;
     }
 
-
+    /**
+     *
+     * @param age
+     * @param cat
+     * @param per
+     * @return
+     * @throws JAMMessageBoxException
+     */
     public boolean isThereMessage(AgentID age, String cat, Performative per) throws JAMMessageBoxException {
         boolean found = false;
         if(!this.isBoxEmpty()){
