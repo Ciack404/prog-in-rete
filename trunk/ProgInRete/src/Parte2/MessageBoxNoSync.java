@@ -219,6 +219,99 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
     }
 
     /**
+     * restituisce true se ` presente un messaggio in coda su box, false altrimenti
+     * @return
+     */
+    public boolean isThereMessage(){
+        if(!this.isBoxEmpty())    return true;
+        else return false;
+    }
+
+    public boolean isThereMessage(AgentID age) throws JAMMessageBoxException {
+        boolean found = false;
+        if(!this.isBoxEmpty()){
+            int i = 0;
+            int len = this.getBox().size();
+            while(found && i<len){
+                if(this.getBox().get(i).getSender().equals(age)){
+                    found=true;
+                    i=len;
+                }
+                else    i++;
+            }
+        }
+        return found;
+    }
+
+
+    public boolean isThereMessage(String cat) throws JAMMessageBoxException {
+        boolean found = false;
+        if(!this.isBoxEmpty()){
+            int i = 0;
+            int len = this.getBox().size();
+            while(found && i<len){
+                if(this.getBox().get(i).getSender().getCategory().equals(cat)){
+                    found=true;
+                    i=len;
+                }
+                else    i++;
+            }
+        }
+        return found;
+    }
+
+
+    public boolean isThereMessage(Performative per) throws JAMMessageBoxException {
+        boolean found = false;
+        if(!this.isBoxEmpty()){
+            int i = 0;
+            int len = this.getBox().size();
+            while(found && i<len){
+                if(this.getBox().get(i).getPerformative().equals(per)){
+                    found=true;
+                    i=len;
+                }
+                else    i++;
+            }
+        }
+        return found;
+    }
+
+
+    public boolean isThereMessage(AgentID age,Performative per) throws JAMMessageBoxException {
+        boolean found = false;
+        if(!this.isBoxEmpty()){
+            int i = 0;
+            int len = this.getBox().size();
+            while(found && i<len){
+                if(this.getBox().get(i).getSender().equals(age) && this.getBox().get(i).getPerformative().equals(per)){
+                    found=true;
+                    i=len;
+                }
+                else    i++;
+            }
+        }
+        return found;
+    }
+
+
+    public boolean isThereMessage(AgentID age, String cat, Performative per) throws JAMMessageBoxException {
+        boolean found = false;
+        if(!this.isBoxEmpty()){
+            int i = 0;
+            int len = this.getBox().size();
+            while(found && i<len){
+                if(this.getBox().get(i).getSender().equals(age) && this.getBox().get(i).getPerformative().equals(per) && this.getBox().get(i).getSender().getCategory().equals(cat)){
+                    found=true;
+                    i=len;
+                }
+                else    i++;
+            }
+        }
+        return found;
+    }
+
+    /**
      * Metodo che inserisce in coda alla casella il messaggio passato come parametro
      * @param mex
      */
