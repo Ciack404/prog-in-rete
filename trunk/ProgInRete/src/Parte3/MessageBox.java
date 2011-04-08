@@ -4,6 +4,7 @@ import Parte1.*;
 import Parte2.*;
 import java.rmi.RemoteException;
 import eccezioni.*;
+import java.util.LinkedList;
 
 /**
  * Class MessageBoxNoSync
@@ -46,6 +47,26 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      */
     public MessageBox(PersonalAgentID ow, int max) throws RemoteException {
         super();
+    }
+
+    public void setOwner(PersonalAgentID ow){
+        super.setOwner(ow);
+    }
+
+    public PersonalAgentID getOwner(){
+        return super.getOwner();
+    }
+
+    public LinkedList<Message> getBox(){
+        return super.getBox();
+    }
+
+    public int getMaxMessaggi(){
+        return super.getMaxMessaggi();
+    }
+
+    public boolean isBoxEmpty(){
+        return super.isBoxEmpty();
     }
 
     /**
