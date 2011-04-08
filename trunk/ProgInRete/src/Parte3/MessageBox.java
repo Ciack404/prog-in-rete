@@ -13,8 +13,8 @@ import eccezioni.*;
  * @version 1.0
  */
 public class MessageBox extends MessageBoxNoSync{
-    public MessageBox(){
-
+    public MessageBox() throws RemoteException{
+        super();
     }
 
 
