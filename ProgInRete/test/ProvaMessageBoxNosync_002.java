@@ -3,24 +3,24 @@ import Parte1.*;
 import Parte2.*;
 import eccezioni.*;
 
-public class ProvaMessageBoxNosync_001 {
+public class ProvaMessageBoxNosync_002 {
 
 	public static void main(String[] args) throws JAMMessageBoxException, RemoteException{
 
 		Message stampa;
 		boolean isThere;
 
-		PersonalAgentID proprietario = new PersonalAgentID("mattia", "francesco");
+		PersonalAgentID proprietario = new PersonalAgentID("Bob", "Charlie");
 
 
-		AgentID agente1 = new CategoryAgentID("Impiegato");
-		AgentID agente2 = new PersonalAgentID("Marco", "Rossi");
-		AgentID agente3 = new PersonalAgentID("Alberto", "Gosso");
-		AgentID agente4 = new CategoryAgentID("Manager");
-		AgentID agente5 = new PersonalAgentID("Beppe", "Siragusa");
-		AgentID agente6 = new PersonalAgentID("Marco", "Passet");
-		AgentID agente7 = new PersonalAgentID("Mattia", "Camusso");
-		AgentID agente8 = new PersonalAgentID("Francesco", "Alisetta");
+		AgentID agente1 = new CategoryAgentID("Magazziniere");
+		AgentID agente2 = new PersonalAgentID("Erika", "De Benedetti");
+		AgentID agente3 = new PersonalAgentID("Alessandro", "Zanon");
+		AgentID agente4 = new CategoryAgentID("Segretario");
+		AgentID agente5 = new PersonalAgentID("Denis", "Rossi");
+		AgentID agente6 = new PersonalAgentID("Alan", "Perotti");
+		AgentID agente7 = new PersonalAgentID("Francesco", "Alisetta");
+		AgentID agente8 = new PersonalAgentID("Mattia", "Camusso");
 
 
         //create caselle di posta
@@ -34,8 +34,8 @@ public class ProvaMessageBoxNosync_001 {
 		Message mex4 = new Message(Performative.INFORM, "agente4", "agente5", agente4, agente5);
 		Message mex5 = new Message(Performative.UNKNOWN, "agente5", "agente6", agente5, agente6);
 		Message mex6 = new Message(Performative.REQUEST, "agente6", "agente7", agente6, agente7);
-		Message mex7 = new Message(Performative.INFORM, "agente7", "agente8", agente7, agente8);
-		Message mex8 = new Message(Performative.REQUEST, "agente8", "agente1", agente8, agente1);
+		Message mex7 = new Message(Performative.INFORM, "agente7", "agente5", agente7, agente5);
+		Message mex8 = new Message(Performative.REQUEST, "agente5", "agente1", agente5, agente1);
 
 		boxMessaggi1.writeMessage(mex1);
 		boxMessaggi1.writeMessage(mex2);
@@ -92,20 +92,20 @@ public class ProvaMessageBoxNosync_001 {
 
 		//legge mex6
 		System.out.print("2) primo messaggio in coda di un certo agente trovato ?  ");
-		isThere = boxMessaggi1.isThereMessage(agente6);
+		isThere = boxMessaggi1.isThereMessage(agente8);
 		System.out.print(isThere + "\n");
 		System.out.print("\n");
 
 
 		//legge mex7
 		System.out.print("3) primo messaggio in coda di una certa performativa trovato ?  ");
-		isThere = boxMessaggi1.isThereMessage(Performative.INFORM);
+		isThere = boxMessaggi1.isThereMessage(Performative.AGREE);
 		System.out.print(isThere + "\n");
 		System.out.print("\n");
 
 		//legge mex8
 		System.out.print("4) primo messaggio in coda di un certo agente + performativa trovato ?  ");
-		isThere = boxMessaggi1.isThereMessage(agente8, Performative.REQUEST);
+		isThere = boxMessaggi1.isThereMessage(agente8, Performative.AGREE);
 		System.out.print(isThere + "\n");
 		System.out.print("\n");
 
