@@ -44,24 +44,40 @@ public class ProvaMessageBoxNosync_001 {
 
 		//legge mex1
 		System.out.println("stampa il primo messaggio in coda nella boxMessaggi1\n");
+                try{
 		stampa = boxMessaggi1.readMessage();
 		System.out.println(stampa + "\n");
+                }catch(JAMMessageBoxException jmbe){
+                    System.out.println("error in mex1 read test");
+                }
 
 		//legge mex2
 		System.out.println("stampa il primo messaggio corrispondende all'agente1 nella boxMessaggi1\n");
-		stampa = boxMessaggi1.readMessage(agente2);
+		try{
+                stampa = boxMessaggi1.readMessage(agente2);
 		System.out.println(stampa + "\n");
+                }catch(JAMMessageBoxException jmbe){
+                    System.out.println("error in mex2 read test");
+                }
 
 		//legge mex3
 		/*modifica inform INFORM*/
 		System.out.println("stampa il primo messaggio con performativa REQUEST in boxMessaggi1\n");
-		stampa = boxMessaggi1.readMessage(Performative.REQUEST);
+		try{
+                stampa = boxMessaggi1.readMessage(Performative.REQUEST);
 		System.out.println(stampa + "\n");
+                }catch(JAMMessageBoxException jmbe){
+                    System.out.println("error in mex3 read test");
+                }
 
 		//legge mex4
 		System.out.println("stampa il primo messaggio con agente4 e Perf.INFORM boxMessaggi1\n");
+                try{
 		stampa = boxMessaggi1.readMessage(agente4, Performative.INFORM);
 		System.out.println(stampa + "\n");
+                }catch(JAMMessageBoxException jmbe){
+                    System.out.println("error in mex4 read test");
+                }
 
 		boxMessaggi1.writeMessage(mex5);
 		boxMessaggi1.writeMessage(mex6);
@@ -79,6 +95,7 @@ public class ProvaMessageBoxNosync_001 {
 		isThere = boxMessaggi1.isThereMessage(agente6);
 		System.out.print(isThere + "\n");
 		System.out.print("\n");
+
 
 		//legge mex7
 		System.out.print("3) primo messaggio in coda di una certa performativa trovato ?  ");
