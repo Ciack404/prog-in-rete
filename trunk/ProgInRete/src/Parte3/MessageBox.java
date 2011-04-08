@@ -33,5 +33,13 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
         return super.readMessage();
     }
 
-    
+    public Message readMessage(AgentID age) throws JAMMessageBoxException {
+        return super.readMessage(age);
+    }
+
+    public Message readMessage(String cat) throws JAMMessageBoxException {
+        return super.readMessage(cat);
+    }
+
+
 }
