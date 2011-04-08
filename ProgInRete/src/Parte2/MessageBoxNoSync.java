@@ -233,7 +233,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      * @return
      * @throws JAMMessageBoxException
      */
-    public boolean isThereMessage(AgentID age) throws JAMMessageBoxException {
+    public boolean isThereMessage(AgentID age){
         boolean found = false;
         if(!this.isBoxEmpty()){
             int i = 0;
@@ -254,7 +254,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      * @return
      * @throws JAMMessageBoxException
      */
-    public boolean isThereMessage(String cat) throws JAMMessageBoxException {
+    public boolean isThereMessage(String cat){
         boolean found = false;
         if(!this.isBoxEmpty()){
             int i = 0;
@@ -275,7 +275,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      * @return
      * @throws JAMMessageBoxException
      */
-    public boolean isThereMessage(Performative per) throws JAMMessageBoxException {
+    public boolean isThereMessage(Performative per){
         boolean found = false;
         if(!this.isBoxEmpty()){
             int i = 0;
@@ -297,7 +297,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      * @return
      * @throws JAMMessageBoxException
      */
-    public boolean isThereMessage(AgentID age,Performative per) throws JAMMessageBoxException {
+    public boolean isThereMessage(AgentID age,Performative per){
         boolean found = false;
         if(!this.isBoxEmpty()){
             int i = 0;
@@ -315,12 +315,13 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
     /**
      *
      * @param age
-     * @param cat
+     * @param catovvio, se manca anche solo una risposta lasciamo perdere.
+
      * @param per
      * @return
      * @throws JAMMessageBoxException
      */
-    public boolean isThereMessage(AgentID age, String cat, Performative per) throws JAMMessageBoxException {
+    public boolean isThereMessage(AgentID age, String cat, Performative per){
         boolean found = false;
         if(!this.isBoxEmpty()){
             int i = 0;
@@ -339,7 +340,8 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      * Metodo che inserisce in coda alla casella il messaggio passato come parametro
      * @param mex
      */
-    public void writeMessage(Message mex){
+    public void writeMessage(Message mex) throws JAMMessageBoxException{
         if(this.getBox().size() < this.getMaxMessaggi())    this.getBox().add(mex);
+        else throw new JAMMessageBoxException();
     }
 }
