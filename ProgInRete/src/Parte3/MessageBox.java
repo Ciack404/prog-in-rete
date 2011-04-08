@@ -21,6 +21,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
         super();
     }
 
+
     /**
      *
      * @param max
@@ -30,6 +31,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
         super();
     }
 
+
     /**
      *
      * @param ow
@@ -38,6 +40,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
     public MessageBox(PersonalAgentID ow) throws RemoteException {
         super();
     }
+
 
     /**
      *
@@ -49,22 +52,47 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
         super();
     }
 
+
+    /**
+     *
+     * @param ow
+     */
     public void setOwner(PersonalAgentID ow){
         super.setOwner(ow);
     }
 
+
+    /**
+     *
+     * @return
+     */
     public PersonalAgentID getOwner(){
         return super.getOwner();
     }
 
+
+    /**
+     *
+     * @return
+     */
     public LinkedList<Message> getBox(){
         return super.getBox();
     }
 
+
+    /**
+     *
+     * @return
+     */
     public int getMaxMessaggi(){
         return super.getMaxMessaggi();
     }
 
+
+    /**
+     *
+     * @return
+     */
     public boolean isBoxEmpty(){
         return super.isBoxEmpty();
     }
@@ -78,6 +106,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
         return super.readMessage();
     }
 
+
     /**
      *
      * @param age
@@ -87,6 +116,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
     synchronized public Message readMessage(AgentID age) throws JAMMessageBoxException {
         return super.readMessage(age);
     }
+
 
     /**
      *
@@ -98,6 +128,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
         return super.readMessage(cat);
     }
 
+
     /**
      *
      * @param per
@@ -107,6 +138,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
     synchronized public Message readMessage(Performative per) throws JAMMessageBoxException {
         return super.readMessage(per);
     }
+
 
     /**
      *
@@ -118,6 +150,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
     synchronized public Message readMessage(AgentID age,Performative per) throws JAMMessageBoxException {
         return super.readMessage(age, per);
     }
+
 
     /**
      *
@@ -131,6 +164,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
         return super.readMessage(age, cat, per);
     }
 
+
     /**
      *
      * @return
@@ -138,6 +172,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
     synchronized public boolean isThereMessage(){
         return super.isThereMessage();
     }
+
 
     /**
      *
@@ -148,6 +183,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
         return super.isThereMessage(age);
     }
 
+
     /**
      *
      * @param cat
@@ -156,6 +192,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
     synchronized public boolean isThereMessage(String cat){
         return super.isThereMessage(cat);
     }
+
 
     /**
      *
@@ -166,6 +203,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
         return super.isThereMessage(per);
     }
 
+
     /**
      *
      * @param age
@@ -175,6 +213,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
     synchronized public boolean isThereMessage(AgentID age,Performative per){
         return super.isThereMessage(age, per);
     }
+
 
     /**
      * 
