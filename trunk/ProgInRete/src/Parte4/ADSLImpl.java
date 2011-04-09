@@ -1,7 +1,6 @@
 package Parte4;
 
 import Parte1.*;
-import Parte2.*;
 import Parte3.*;
 import eccezioni.*;
 import java.rmi.RemoteException;
@@ -16,10 +15,21 @@ import java.util.*;
 public class ADSLImpl extends UnicastRemoteObject implements ADSL{
     protected List<RemoteMessageBox> messageBoxes;
 
+    /**
+     * 
+     * @throws RemoteException
+     */
     public ADSLImpl() throws RemoteException{
         messageBoxes = new LinkedList<RemoteMessageBox>();
     }
 
+    /**
+     * 
+     * @param agentID
+     * @return
+     * @throws JAMADSLException
+     * @throws RemoteException
+     */
     synchronized public List<RemoteMessageBox> getRemoteMessageBox(AgentID agentID) throws JAMADSLException, RemoteException{
         if(this.messageBoxes.isEmpty())   throw new JAMADSLException();
         else{
@@ -31,14 +41,26 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
         }
     }
 
-    synchronized void insertRemoteMessageBox(RemoteMessageBox messageBox) throws JAMADSLException, RemoteException{
+    /**
+     * 
+     * @param messageBox
+     * @throws JAMADSLException
+     * @throws RemoteException
+     */
+    synchronized public void insertRemoteMessageBox(RemoteMessageBox messageBox) throws JAMADSLException, RemoteException{
         if(this.messageBoxes.contains(messageBox))    throw new JAMADSLException();
         else{
             this.messageBoxes.add(messageBox);
         }
     }
 
-    synchronized void removeRemoteMessageBox(AgentID agentID) throws JAMADSLException, RemoteException{
+    /**
+     * 
+     * @param agentID
+     * @throws JAMADSLException
+     * @throws RemoteException
+     */
+    synchronized public void removeRemoteMessageBox(AgentID agentID) throws JAMADSLException, RemoteException{
         if(this.messageBoxes.isEmpty())    throw new JAMADSLException();
         else{
             int i=0;

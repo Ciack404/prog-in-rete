@@ -14,6 +14,12 @@ public interface RemoteMessageBox extends java.rmi.Remote{
     /**
      * 
      * @return
+     */
+    PersonalAgentID getOwner();
+
+    /**
+     * 
+     * @return
      * @throws JAMMessageBoxException
      */
     Message readMessage() throws JAMMessageBoxException;
