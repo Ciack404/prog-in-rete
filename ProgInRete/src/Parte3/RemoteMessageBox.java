@@ -4,6 +4,8 @@ package Parte3;
 import Parte1.*;
 import Parte2.*;
 import eccezioni.*;
+import java.util.LinkedList;
+
 /**
  * Class MessageBoxNoSync
  * @author Francesco Alisetta, Mattia Camusso
@@ -11,11 +13,13 @@ import eccezioni.*;
  */
 public interface RemoteMessageBox extends java.rmi.Remote{
 
-    /**
-     * 
-     * @return
-     */
+    void setOwner(PersonalAgentID ow);
+
     PersonalAgentID getOwner();
+
+    LinkedList<Message> getBox();
+
+    int getMaxMessaggi();
 
     /**
      * 
