@@ -32,9 +32,9 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      * @throws RemoteException
      */
     public MessageBoxNoSync(int max) throws RemoteException {
-        owner = new PersonalAgentID();
-        box = new LinkedList<Message>();
-        maxMessaggi = max;
+        this.owner = new PersonalAgentID();
+        this.box = new LinkedList<Message>();
+        this.maxMessaggi = max;
     }
 
     /**
@@ -43,9 +43,9 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      * @throws RemoteException
      */
     public MessageBoxNoSync(PersonalAgentID ow) throws RemoteException {
-        owner = ow;
-        box = new LinkedList<Message>();
-        maxMessaggi = 10;
+        this.owner = ow;
+        this.box = new LinkedList<Message>();
+        this.maxMessaggi = 10;
     }
 
     /**
@@ -55,9 +55,9 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      * @throws RemoteException
      */
     public MessageBoxNoSync(PersonalAgentID ow, int max) throws RemoteException {
-        owner = ow;
-        box = new LinkedList<Message>();
-        maxMessaggi = max;
+        this.owner = ow;
+        this.box = new LinkedList<Message>();
+        this.maxMessaggi = max;
     }
 
     /**
