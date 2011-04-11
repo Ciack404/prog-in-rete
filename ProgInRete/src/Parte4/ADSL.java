@@ -11,7 +11,7 @@ import java.util.List;
  * @author Francesco Alisetta, Mattia Camusso
  * @version 1.0
  */
-public interface ADSL {
+public interface ADSL extends java.rmi.Remote{
 
     /**
      * 
