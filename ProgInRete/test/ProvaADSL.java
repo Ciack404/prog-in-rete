@@ -10,7 +10,7 @@ import java.rmi.RemoteException;
 public class ProvaADSL{
     public static void main(String[] args){
         try{
-                ADSLImpl adsl = new ADSLImpl();
+            ADSLImpl adsl = new ADSLImpl();
             try{
                 java.rmi.registry.LocateRegistry.createRegistry(2000);
                 Naming.rebind("rmi://127.0.0.1:2000/ADSL", adsl);

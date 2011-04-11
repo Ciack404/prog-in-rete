@@ -14,6 +14,8 @@ import java.util.*;
  */
 public class ADSLImpl extends UnicastRemoteObject implements ADSL{
     protected List<RemoteMessageBox> messageBoxes;
+    protected int port;
+    protected String Name;
 
     /**
      * 
