@@ -6,11 +6,11 @@ package Parte1;
 * @version 1.0
 */
 public class Message {
-    Performative performer;
-    String content;
-    Object extraArgument;
-    AgentID sender;
-    AgentID receiver;
+    private Performative performer;
+    private String content;
+    private Object extraArgument;
+    private AgentID sender;
+    private AgentID receiver;
 
     /**
     * Costruttore che crea un Message vuoto;

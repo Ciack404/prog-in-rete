@@ -15,27 +15,9 @@ public interface RemoteMessageBox extends java.rmi.Remote{
 
     /**
      * 
-     * @param ow
-     */
-    void setOwner(PersonalAgentID ow);
-
-    /**
-     * 
      * @return
      */
     PersonalAgentID getOwner();
-
-    /**
-     * 
-     * @return
-     */
-    LinkedList<Message> getBox();
-
-    /**
-     * 
-     * @return
-     */
-    int getMaxMessaggi();
 
     /**
      * 

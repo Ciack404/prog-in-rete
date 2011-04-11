@@ -12,10 +12,10 @@ import eccezioni.*;
  * @version 1.0
  */
 public class MessageBoxNoSync extends UnicastRemoteObject {
-    protected PersonalAgentID owner;
-    protected LinkedList<Message> box;
-    protected final int maxMessaggi;
-    private int DEFAULT_MAX_MESSAGE = 10;
+    private PersonalAgentID owner;
+    private LinkedList<Message> box;
+    private final int maxMessaggi;
+    protected int DEFAULT_MAX_MESSAGE = 10;
 
     /**
      *
@@ -42,14 +42,6 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
 
     /**
      *
-     * @param ow
-     */
-    public void setOwner(PersonalAgentID ow){
-        this.owner = ow;
-    }
-
-    /**
-     *
      * @return
      */
     public PersonalAgentID getOwner(){
@@ -60,24 +52,8 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      *
      * @return
      */
-    public LinkedList<Message> getBox(){
-        return this.box;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getMaxMessaggi(){
-        return this.maxMessaggi;
-    }
-
-    /**
-     *
-     * @return
-     */
     public boolean isBoxEmpty(){
-        return this.getBox().isEmpty();
+        return this.box.isEmpty();
     }
 
     /**
@@ -86,7 +62,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      * @throws JAMMessageBoxException
      */
     public Message readMessage() throws JAMMessageBoxException {
-        if(!this.isBoxEmpty())    return this.getBox().removeFirst();
+        if(!this.isBoxEmpty())    return this.box.removeFirst();
         else throw new JAMMessageBoxException();
     }
 
@@ -100,13 +76,13 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
         if(!this.isBoxEmpty()){
             boolean notFound = true;
             int i = 0;
-            int len = this.getBox().size();
+            int len = this.box.size();
             while(notFound && i<len){
-                if(this.getBox().get(i).getSender().equals(age))    notFound=false;
+                if(this.box.get(i).getSender().equals(age))    notFound=false;
                 else    i++;
             }
             if(notFound)    throw new JAMMessageBoxException();
-            else return this.getBox().remove(i);
+            else return this.box.remove(i);
         }
         else throw new JAMMessageBoxException();
     }
@@ -121,13 +97,13 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
         if(!this.isBoxEmpty()){
             boolean notFound = true;
             int i = 0;
-            int len = this.getBox().size();
+            int len = this.box.size();
             while(notFound && i<len){
-                if(this.getBox().get(i).getSender().getCategory().equals(cat))    notFound=false;
+                if(this.box.get(i).getSender().getCategory().equals(cat))    notFound=false;
                 else    i++;
             }
             if(notFound)    throw new JAMMessageBoxException();
-            else return this.getBox().remove(i);
+            else return this.box.remove(i);
         }
         else throw new JAMMessageBoxException();
     }
@@ -142,13 +118,13 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
         if(!this.isBoxEmpty()){
             boolean notFound = true;
             int i = 0;
-            int len = this.getBox().size();
+            int len = this.box.size();
             while(notFound && i<len){
-                if(this.getBox().get(i).getPerformative().equals(per))    notFound=false;
+                if(this.box.get(i).getPerformative().equals(per))    notFound=false;
                 else    i++;
             }
             if(notFound)    throw new JAMMessageBoxException();
-            else return this.getBox().remove(i);
+            else return this.box.remove(i);
         }
         else throw new JAMMessageBoxException();
     }
@@ -164,13 +140,13 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
         if(!this.isBoxEmpty()){
             boolean notFound = true;
             int i = 0;
-            int len = this.getBox().size();
+            int len = this.box.size();
             while(notFound && i<len){
-                if(this.getBox().get(i).getSender().equals(age) && this.getBox().get(i).getPerformative().equals(per))    notFound=false;
+                if(this.box.get(i).getSender().equals(age) && this.box.get(i).getPerformative().equals(per))    notFound=false;
                 else    i++;
             }
             if(notFound)    throw new JAMMessageBoxException();
-            else return this.getBox().remove(i);
+            else return this.box.remove(i);
         }
         else throw new JAMMessageBoxException();
     }
@@ -187,13 +163,13 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
         if(!this.isBoxEmpty()){
             boolean notFound = true;
             int i = 0;
-            int len = this.getBox().size();
+            int len = this.box.size();
             while(notFound && i<len){
-                if(this.getBox().get(i).getSender().equals(age) && this.getBox().get(i).getPerformative().equals(per) && this.getBox().get(i).getSender().getCategory().equals(cat))    notFound=false;
+                if(this.box.get(i).getSender().equals(age) && this.box.get(i).getPerformative().equals(per) && this.box.get(i).getSender().getCategory().equals(cat))    notFound=false;
                 else    i++;
             }
             if(notFound)    throw new JAMMessageBoxException();
-            else return this.getBox().remove(i);
+            else return this.box.remove(i);
         }
         else throw new JAMMessageBoxException();
     }
@@ -217,9 +193,9 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
         boolean found = false;
         if(!this.isBoxEmpty()){
             int i = 0;
-            int len = this.getBox().size();
+            int len = this.box.size();
             while(!found && i<len){
-                if(this.getBox().get(i).getSender().equals(age)){
+                if(this.box.get(i).getSender().equals(age)){
                     found=true;
                 }
                 else    i++;
@@ -232,15 +208,15 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      *
      * @param cat
      * @return
-     * @throws JAMMessageBoxException
+     * @throws JAMMessageBoxExceptgetBox()ion
      */
     public boolean isThereMessage(String cat){
         boolean found = false;
         if(!this.isBoxEmpty()){
             int i = 0;
-            int len = this.getBox().size();
+            int len = this.box.size();
             while(!found && i<len){
-                if(this.getBox().get(i).getSender().getCategory().equals(cat)){
+                if(this.box.get(i).getSender().getCategory().equals(cat)){
                     found=true;
                 }
                 else    i++;
@@ -259,9 +235,9 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
         boolean found = false;
         if(!this.isBoxEmpty()){
             int i = 0;
-            int len = this.getBox().size();
+            int len = this.box.size();
             while(!found && i<len){
-                if(this.getBox().get(i).getPerformative().equals(per)){
+                if(this.box.get(i).getPerformative().equals(per)){
                     found=true;
                 }
                 else    i++;
@@ -281,9 +257,9 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
         boolean found = false;
         if(!this.isBoxEmpty()){
             int i = 0;
-            int len = this.getBox().size();
+            int len = this.box.size();
             while(!found && i<len){
-                if(this.getBox().get(i).getSender().equals(age) && this.getBox().get(i).getPerformative().equals(per)){
+                if(this.box.get(i).getSender().equals(age) && this.box.get(i).getPerformative().equals(per)){
                     found=true;
                 }
                 else    i++;
@@ -305,9 +281,9 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
         boolean found = false;
         if(!this.isBoxEmpty()){
             int i = 0;
-            int len = this.getBox().size();
+            int len = this.box.size();
             while(!found && i<len){
-                if(this.getBox().get(i).getSender().equals(age) && this.getBox().get(i).getPerformative().equals(per) && this.getBox().get(i).getSender().getCategory().equals(cat)){
+                if(this.box.get(i).getSender().equals(age) && this.box.get(i).getPerformative().equals(per) && this.box.get(i).getSender().getCategory().equals(cat)){
                     found=true;
                 }
                 else    i++;
@@ -321,7 +297,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      * @param mex
      */
     public void writeMessage(Message mex) throws JAMMessageBoxException{
-        if(this.getBox().size() < this.getMaxMessaggi())    this.getBox().add(mex);
+        if(this.box.size() < this.maxMessaggi)    this.box.add(mex);
         else throw new JAMMessageBoxException();
     }
 }
