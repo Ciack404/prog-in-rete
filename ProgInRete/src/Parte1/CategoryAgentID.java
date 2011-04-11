@@ -6,7 +6,6 @@ package Parte1;
  * @version 1.0
  */
 public class CategoryAgentID extends GenericAgentID{
-    protected String category;
 
     /**
      * Costruttore che crea un CategoryAgentID vuoto;
@@ -40,29 +39,5 @@ public class CategoryAgentID extends GenericAgentID{
         } catch(ClassCastException err){
             return false;
 	}
-    }
-
-    /**
-     * Restituisce una stringa contenente il parametro name
-     * @return La stringa richiesta
-     */
-    public String getName(){
-        return "NONAME";
-    }
-
-    /**
-     * Restituisce una stringa contenente il parametro category
-     * @return La stringa richiesta
-     */
-    public String getCategory(){
-        return this.category;
-    }
-
-    /**
-     * Restituisce una versione stampabile dell`oggetto
-     * @return La stringa richiesta
-     */
-    public String toString(){
-        return "("+ this.getName() +","+ this.getCategory() +")";
     }
 }

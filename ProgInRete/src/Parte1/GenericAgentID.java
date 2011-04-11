@@ -6,6 +6,16 @@ package Parte1;
  * @version 1.0
  */
 public class GenericAgentID implements AgentID{
+    protected String category;
+    protected String name;
+
+    /**
+     *
+     */
+    public GenericAgentID(){
+        this.category="NOCATEGORY";
+        this.name="NONAME";
+    }
 
     /**
      * Confronta due oggetti di tipo AgentID
@@ -28,7 +38,7 @@ public class GenericAgentID implements AgentID{
      * @return La stringa richiesta
      */
     public String getName(){
-        return "NONAME";
+        return this.name;
     }
 
     /**
@@ -36,7 +46,7 @@ public class GenericAgentID implements AgentID{
      * @return La stringa richiesta
      */
     public String getCategory(){
-        return "NOCATEGORY";
+        return this.category;
     }
 
     /**
