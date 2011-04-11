@@ -15,6 +15,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
     protected PersonalAgentID owner;
     protected LinkedList<Message> box;
     protected final int maxMessaggi;
+    private int DEFAULT_MAX_MESSAGE = 10;
 
     /**
      *
@@ -23,7 +24,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
     public MessageBoxNoSync() throws RemoteException {
         owner = new PersonalAgentID();
         box = new LinkedList<Message>();
-        maxMessaggi = 10;
+        maxMessaggi = DEFAULT_MAX_MESSAGE;
     }
 
     /**
@@ -45,7 +46,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
     public MessageBoxNoSync(PersonalAgentID ow) throws RemoteException {
         this.owner = ow;
         this.box = new LinkedList<Message>();
-        this.maxMessaggi = 10;
+        this.maxMessaggi = DEFAULT_MAX_MESSAGE;
     }
 
     /**

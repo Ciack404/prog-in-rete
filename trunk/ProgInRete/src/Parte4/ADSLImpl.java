@@ -15,14 +15,26 @@ import java.util.*;
 public class ADSLImpl extends UnicastRemoteObject implements ADSL{
     protected List<RemoteMessageBox> messageBoxes;
     protected int port;
-    protected String Name;
+    protected String name;
 
     /**
      * 
      * @throws RemoteException
      */
     public ADSLImpl() throws RemoteException{
-        messageBoxes = new LinkedList<RemoteMessageBox>();
+        this.messageBoxes = new LinkedList<RemoteMessageBox>();
+    }
+
+    /**
+     * 
+     * @param p
+     * @param n
+     * @throws RemoteException
+     */
+    public ADSLImpl(int p, String n) throws RemoteException{
+        this.messageBoxes = new LinkedList<RemoteMessageBox>();
+        this.name = n;
+        this.port = p;
     }
 
     /**
