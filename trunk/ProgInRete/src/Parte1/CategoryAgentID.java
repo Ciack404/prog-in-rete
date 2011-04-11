@@ -11,6 +11,7 @@ public class CategoryAgentID extends GenericAgentID{
      * Costruttore che crea un CategoryAgentID vuoto;
      */
     public CategoryAgentID() {
+        this.name = "NONAME";
         this.category = "";
     }
 
@@ -19,6 +20,7 @@ public class CategoryAgentID extends GenericAgentID{
      * @param cat Categoria dell`agente
      */
     public CategoryAgentID(String cat) {
+        this.name = "NONAME";
         this.category = cat;
     }
 

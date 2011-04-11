@@ -14,31 +14,12 @@ import java.util.LinkedList;
 public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
 
     /**
-     * 
-     * @throws RemoteException
-     */
-    public MessageBox() throws RemoteException{
-        super();
-    }
-
-
-    /**
-     *
-     * @param max
-     * @throws RemoteException
-     */
-    public MessageBox(int max) throws RemoteException {
-        super();
-    }
-
-
-    /**
      *
      * @param ow
      * @throws RemoteException
      */
     public MessageBox(PersonalAgentID ow) throws RemoteException {
-        super();
+        super(ow);
     }
 
 
@@ -49,7 +30,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @throws RemoteException
      */
     public MessageBox(PersonalAgentID ow, int max) throws RemoteException {
-        super();
+        super(ow, max);
     }
 
 
