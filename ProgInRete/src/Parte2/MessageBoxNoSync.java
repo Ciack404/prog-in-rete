@@ -19,27 +19,6 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
 
     /**
      *
-     * @throws RemoteException
-     */
-    public MessageBoxNoSync() throws RemoteException {
-        owner = new PersonalAgentID();
-        box = new LinkedList<Message>();
-        maxMessaggi = DEFAULT_MAX_MESSAGE;
-    }
-
-    /**
-     *
-     * @param max
-     * @throws RemoteException
-     */
-    public MessageBoxNoSync(int max) throws RemoteException {
-        this.owner = new PersonalAgentID();
-        this.box = new LinkedList<Message>();
-        this.maxMessaggi = max;
-    }
-
-    /**
-     *
      * @param ow
      * @throws RemoteException
      */
