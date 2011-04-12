@@ -8,14 +8,6 @@ package Parte1;
 public class CategoryAgentID extends GenericAgentID{
 
     /**
-     * Costruttore che crea un CategoryAgentID vuoto;
-     */
-    public CategoryAgentID() {
-        this.name = "NONAME";
-        this.category = "";
-    }
-
-    /**
      * Costruttore che crea un CategoryAgentID con categoria cat
      * @param cat Categoria dell`agente
      */

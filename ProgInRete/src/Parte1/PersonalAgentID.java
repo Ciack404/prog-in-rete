@@ -8,20 +8,12 @@ package Parte1;
 public class PersonalAgentID extends CategoryAgentID{
 
     /**
-     * Costruttore che crea un PersonalAgentID vuoto;
-     */
-    public PersonalAgentID() {
-        this.category = "";
-        this.name = "";
-    }
-
-    /**
      * Costruttore che crea un PersonalAgentID con nome nam e categoria cat
      * @param cat Categoria dell`agente
      * @param nam Nome da assegnare all`agente
      */
     public PersonalAgentID(String na, String cat) {
-        this.category = cat;
+        super(cat);
         this.name = na;
     }
 
