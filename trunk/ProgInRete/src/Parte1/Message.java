@@ -19,7 +19,7 @@ public class Message {
         this.performer = null;
 	this.content = "";
 	this.extraArgument = new Object();
-	this.sender = new PersonalAgentID();
+	this.sender = new GenericAgentID();
 	this.receiver = new GenericAgentID();
     }
 

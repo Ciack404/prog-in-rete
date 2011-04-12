@@ -62,9 +62,9 @@ public class ProvaMessageBoxNosync_002 {
 
 		//legge mex3
 		/*modifica inform INFORM*/
-		System.out.println("stampa il primo messaggio con performativa REQUEST in boxMessaggi1\n");
+		System.out.println("stampa il primo messaggio con performativa INFORM in boxMessaggi1\n");
 		try{
-                stampa = boxMessaggi1.readMessage(Performative.REQUEST);
+                stampa = boxMessaggi1.readMessage(Performative.INFORM);
 		System.out.println(stampa + "\n");
                 }catch(JAMMessageBoxException jmbe){
                     System.out.println("error in mex3 read test");
