@@ -176,4 +176,13 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
     synchronized public boolean isThereMessage(AgentID age, String cat, Performative per){
         return super.isThereMessage(age, cat, per);
     }
+
+    /**
+     *
+     * @param mex
+     * @throws JAMMessageBoxException
+     */
+    synchronized public void writeMessage(Message mex) throws JAMMessageBoxException{
+        super.writeMessage(mex);
+    }
 }
