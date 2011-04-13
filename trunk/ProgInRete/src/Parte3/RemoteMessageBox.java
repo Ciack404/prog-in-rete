@@ -2,9 +2,7 @@ package Parte3;
 
 
 import Parte1.*;
-import Parte2.*;
 import eccezioni.*;
-import java.util.LinkedList;
 
 /**
  * Class MessageBoxNoSync
@@ -131,4 +129,10 @@ public interface RemoteMessageBox extends java.rmi.Remote{
      */
     boolean isThereMessage(AgentID age,String cat,Performative per);
 
+    /**
+     * 
+     * @param mex
+     * @throws JAMMessageBoxException
+     */
+    public void writeMessage(Message mex) throws JAMMessageBoxException;
 }
