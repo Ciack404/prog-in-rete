@@ -53,16 +53,24 @@ public class JAMAgent {
         this.port = 1099;
     }
 
+    /**
+     * 
+     */
     public void init(){
         try{
-            adsl = (ADSL)Naming.lookup("rmi://"+this.ip+":"+this.port+"/"+this.name);
+            this.adsl = (ADSL)Naming.lookup("rmi://"+this.ip+":"+this.port+"/"+this.name);
         }catch(Exception e){
             System.out.println("Impossibile effettuare la lookup su ADSL");
         }
     }
 
+    /**
+     * 
+     * @throws JAMADSLException
+     * @throws RemoteException
+     */
     public void destroy() throws JAMADSLException, RemoteException {
-        adsl.removeRemoteMessageBox(myID);
+        this.adsl.removeRemoteMessageBox(myID);
     }
 
     /**
@@ -70,7 +78,7 @@ public class JAMAgent {
      * @return
      */
     public boolean isThereMessage(){
-        return myMessageBox.isThereMessage();
+        return this.myMessageBox.isThereMessage();
     }
 
     /**
@@ -79,7 +87,7 @@ public class JAMAgent {
      * @return
      */
     public boolean isThereMessage(AgentID age){
-        return myMessageBox.isThereMessage(age);
+        return this.myMessageBox.isThereMessage(age);
     }
 
     /**
@@ -88,7 +96,7 @@ public class JAMAgent {
      * @return
      */
     public boolean isThereMessage(String cat){
-        return myMessageBox.isThereMessage(cat);
+        return this.myMessageBox.isThereMessage(cat);
     }
 
     /**
@@ -97,7 +105,7 @@ public class JAMAgent {
      * @return
      */
     public boolean isThereMessage(Performative per){
-        return myMessageBox.isThereMessage(per);
+        return this.myMessageBox.isThereMessage(per);
     }
 
     /**
@@ -107,7 +115,7 @@ public class JAMAgent {
      * @return
      */
     public boolean isThereMessage(AgentID age,Performative per){
-        return myMessageBox.isThereMessage(age,per);
+        return this.myMessageBox.isThereMessage(age,per);
     }
 
     /**
@@ -118,7 +126,7 @@ public class JAMAgent {
      * @return
      */
     public boolean isThereMessage(AgentID age, String cat, Performative per){
-        return myMessageBox.isThereMessage(age,cat,per);
+        return this.myMessageBox.isThereMessage(age,cat,per);
     }
 
     /**

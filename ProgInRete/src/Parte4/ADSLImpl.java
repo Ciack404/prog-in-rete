@@ -23,6 +23,8 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
      */
     public ADSLImpl() throws RemoteException{
         this.messageBoxes = new LinkedList<RemoteMessageBox>();
+        this.port = 1099;
+        this.name = "ADSL";
     }
 
     /**
