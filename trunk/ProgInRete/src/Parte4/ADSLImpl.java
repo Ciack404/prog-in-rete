@@ -77,7 +77,12 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
     synchronized public void removeRemoteMessageBox(AgentID agentID) throws JAMADSLException, RemoteException{
         if(this.messageBoxes.isEmpty())    throw new JAMADSLException();
         else{
-            int i=0;
+            for(RemoteMessageBox box:this.messageBoxes){
+                if(box.getOwner().equals(agentID)){
+                    this.messageBoxes.remove(box);
+                }
+            }
+            /*int i=0;
             int len=this.messageBoxes.size();
             while(i<len){
                 if(messageBoxes.get(i).getOwner().equals(agentID)){
@@ -85,7 +90,7 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
                     i=len;
                 }
                 else i++;
-            }
+            }*/
         }
     }
 }

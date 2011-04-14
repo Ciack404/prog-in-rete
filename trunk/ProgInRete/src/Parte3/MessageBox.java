@@ -35,22 +35,6 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
     /**
      *
      * @return
-     */
-    public PersonalAgentID getOwner(){
-        return super.getOwner();
-    }
-
-    /**
-     *
-     * @return
-     */
-    public boolean isBoxEmpty(){
-        return super.isBoxEmpty();
-    }
-
-    /**
-     *
-     * @return
      * @throws JAMMessageBoxException
      */
     synchronized public Message readMessage() throws JAMMessageBoxException{
