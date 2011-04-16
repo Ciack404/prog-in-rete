@@ -29,19 +29,15 @@ public abstract class JAMBehaviour implements Runnable{
         this.myThread = myThread;
     }
 
-    public void sleep(long ms) throws InterruptedException {
-        this.myThread.sleep(ms);
+    public void sleep(long ms){
+        try{
+            this.myThread.sleep(ms);
+        }catch(InterruptedException e){}
     }
 
-    public void action() throws JAMBehaviourInterruptedException {
+    public abstract void action() throws JAMBehaviourInterruptedException;
 
-    }
+    public abstract void setup() throws JAMBehaviourInterruptedException;
 
-    public void setup() throws JAMBehaviourInterruptedException {
-
-    }
-
-    public void dispose() throws JAMBehaviourInterruptedException {
-        
-    }
+    public abstract void dispose() throws JAMBehaviourInterruptedException;
 }

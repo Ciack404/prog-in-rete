@@ -3,7 +3,6 @@ package Parte5;
 import Parte1.*;
 import Parte3.*;
 import Parte4.*;
-import java.rmi.RemoteException;
 import java.util.List;
 import eccezioni.*;
 import java.rmi.*;
@@ -14,13 +13,14 @@ import java.rmi.*;
  * @author Francesco Alisetta, Mattia Camusso
  * @version 1.0
  */
-public class JAMAgent {
+public abstract class JAMAgent {
     private MessageBox myMessageBox;
     private PersonalAgentID myID;
     private ADSL adsl;
     private String name;
     private String ip;
     private int port;
+    private java.util.LinkedList<JAMBehaviour> behaviours;
 
     /**
      *
@@ -71,6 +71,9 @@ public class JAMAgent {
      */
     public void destroy() throws JAMADSLException, RemoteException {
         this.adsl.removeRemoteMessageBox(myID);
+        for(JAMBehaviour be:behaviours){
+            be.done();
+        }
     }
 
     /**
@@ -205,5 +208,17 @@ public class JAMAgent {
         for(RemoteMessageBox box:bo){
                 box.writeMessage(mex);
         }
+    }
+
+    /**
+     * 
+     * @param behaviour
+     */
+    void addBehaviour(JAMBehaviour behaviour) {
+        this.behaviours.add(behaviour);
+    }
+
+    void start(){
+
     }
 }
