@@ -17,31 +17,31 @@ public abstract class JAMBehaviour implements Runnable{
         this.done = false;
     }
 
-    void done(){
-
+    public void done(){
+        this.done = true;
     }
 
-    boolean isDone(){
+    public boolean isDone(){
         return this.done;
     }
 
-    void setMyThread(Thread myThread){
+    public void setMyThread(Thread myThread){
+        this.myThread = myThread;
+    }
+
+    public void sleep(long ms) throws InterruptedException {
+        this.myThread.sleep(ms);
+    }
+
+    public void action() throws JAMBehaviourInterruptedException {
 
     }
 
-    void sleep(long ms){
+    public void setup() throws JAMBehaviourInterruptedException {
 
     }
 
-    void action() throws JAMBehaviourInterruptedException {
-
-    }
-
-    void setup() throws JAMBehaviourInterruptedException {
-
-    }
-
-    void dispose() throws JAMBehaviourInterruptedException {
+    public void dispose() throws JAMBehaviourInterruptedException {
         
     }
 }
