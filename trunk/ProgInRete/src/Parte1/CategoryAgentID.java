@@ -21,6 +21,7 @@ public class CategoryAgentID extends GenericAgentID{
      * @param agentID Oggetto con cui effettuare il confronto
      * @return true se i due oggetti sono identici, false altrimenti
      */
+    @Override
     public boolean equals(Object agentID) {
 	if(this==agentID) return true;
 	if(agentID==null) return false;

@@ -116,6 +116,7 @@ public class Message {
     /**
      *
      */
+    @Override
     public String toString(){
 	return "Performativa: " + performer + "\nSender: " + sender.toString() + "\nReceiver: " + receiver.toString() + "\nContent: " + content + "\nExtraArgument: " + extraArgument.toString();
     }
