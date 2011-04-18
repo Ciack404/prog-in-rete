@@ -19,6 +19,7 @@ public abstract class JAMBehaviour implements Runnable{
 
     public void done(){
         this.done = true;
+        this.myThread.interrupt();
     }
 
     public boolean isDone(){

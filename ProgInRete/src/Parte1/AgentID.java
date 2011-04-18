@@ -30,5 +30,6 @@ public interface AgentID {
      * Restituisce una versione stampabile dell`oggetto
      * @return La stringa richiesta
      */
+    @Override
     public String toString();
 }

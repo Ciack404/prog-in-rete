@@ -37,6 +37,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @return
      * @throws JAMMessageBoxException
      */
+    @Override
     synchronized public Message readMessage() throws JAMMessageBoxException{
         return super.readMessage();
     }
@@ -48,6 +49,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @return
      * @throws JAMMessageBoxException
      */
+    @Override
     synchronized public Message readMessage(AgentID age) throws JAMMessageBoxException {
         return super.readMessage(age);
     }
@@ -59,6 +61,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @return
      * @throws JAMMessageBoxException
      */
+    @Override
     synchronized public Message readMessage(String cat) throws JAMMessageBoxException {
         return super.readMessage(cat);
     }
@@ -70,6 +73,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @return
      * @throws JAMMessageBoxException
      */
+    @Override
     synchronized public Message readMessage(Performative per) throws JAMMessageBoxException {
         return super.readMessage(per);
     }
@@ -82,6 +86,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @return
      * @throws JAMMessageBoxException
      */
+    @Override
     synchronized public Message readMessage(AgentID age,Performative per) throws JAMMessageBoxException {
         return super.readMessage(age, per);
     }
@@ -95,6 +100,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @return
      * @throws JAMMessageBoxException
      */
+    @Override
     synchronized public Message readMessage(AgentID age, String cat, Performative per) throws JAMMessageBoxException {
         return super.readMessage(age, cat, per);
     }
@@ -104,6 +110,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      *
      * @return
      */
+    @Override
     synchronized public boolean isThereMessage(){
         return super.isThereMessage();
     }
@@ -114,6 +121,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @param age
      * @return
      */
+    @Override
     synchronized public boolean isThereMessage(AgentID age){
         return super.isThereMessage(age);
     }
@@ -124,6 +132,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @param cat
      * @return
      */
+    @Override
     synchronized public boolean isThereMessage(String cat){
         return super.isThereMessage(cat);
     }
@@ -134,6 +143,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @param per
      * @return
      */
+    @Override
     synchronized public boolean isThereMessage(Performative per){
         return super.isThereMessage(per);
     }
@@ -145,6 +155,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @param per
      * @return
      */
+    @Override
     synchronized public boolean isThereMessage(AgentID age,Performative per){
         return super.isThereMessage(age, per);
     }
@@ -157,6 +168,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @param per
      * @return
      */
+    @Override
     synchronized public boolean isThereMessage(AgentID age, String cat, Performative per){
         return super.isThereMessage(age, cat, per);
     }
@@ -166,6 +178,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @param mex
      * @throws JAMMessageBoxException
      */
+    @Override
     synchronized public void writeMessage(Message mex) throws JAMMessageBoxException{
         super.writeMessage(mex);
     }

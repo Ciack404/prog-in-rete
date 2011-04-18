@@ -22,6 +22,7 @@ public class GenericAgentID implements AgentID{
      * @param agentID oggetto con cui effettuare il confronto
      * @return true se i due oggetti sono identici, false altrimenti
      */
+    @Override
     public boolean equals(Object agentID){
         if(this==agentID)   return true;
         if(agentID==null)   return false;
@@ -53,6 +54,7 @@ public class GenericAgentID implements AgentID{
      * Restituisce una versione stampabile dell`oggetto
      * @return La stringa richiesta
      */
+    @Override
     public String toString(){
         return "("+ this.getName() +","+ this.getCategory() +")";
     }
