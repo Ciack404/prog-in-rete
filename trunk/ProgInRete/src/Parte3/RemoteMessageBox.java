@@ -22,9 +22,7 @@ public interface RemoteMessageBox extends java.rmi.Remote{
      * @return
      * @throws JAMMessageBoxException
      */
-    Message readMessage() throws JAMMessageBoxException;
-
-
+    Message readMessage() throws JAMMessageBoxException, InterruptedException;
 
     /**
      *
@@ -32,17 +30,7 @@ public interface RemoteMessageBox extends java.rmi.Remote{
      * @return
      * @throws JAMMessageBoxException
      */
-    Message readMessage(AgentID age) throws JAMMessageBoxException;
-
-
-    /**
-     *
-     * @param cat
-     * @return
-     * @throws JAMMessageBoxException
-     */
-    Message readMessage(String cat) throws JAMMessageBoxException;
-
+    Message readMessage(AgentID age) throws JAMMessageBoxException, InterruptedException;
 
     /**
      *
@@ -50,8 +38,7 @@ public interface RemoteMessageBox extends java.rmi.Remote{
      * @return
      * @throws JAMMessageBoxException
      */
-    Message readMessage(Performative per) throws JAMMessageBoxException;
-
+    Message readMessage(Performative per) throws JAMMessageBoxException, InterruptedException;
 
     /**
      *
@@ -60,28 +47,13 @@ public interface RemoteMessageBox extends java.rmi.Remote{
      * @return
      * @throws JAMMessageBoxException
      */
-    Message readMessage(AgentID age,Performative per) throws JAMMessageBoxException;
-
-
-
-    /**
-     *
-     * @param age
-     * @param cat
-     * @param per
-     * @return
-     * @throws JAMMessageBoxException
-     */
-    Message readMessage(AgentID age,String cat,Performative per) throws JAMMessageBoxException;
-
-
+    Message readMessage(AgentID age,Performative per) throws JAMMessageBoxException, InterruptedException;
 
     /**
      *
      * @return
      */
     boolean isThereMessage();
-
 
     /**
      *
@@ -90,25 +62,12 @@ public interface RemoteMessageBox extends java.rmi.Remote{
      */
     boolean isThereMessage(AgentID age);
 
-
-
-    /**
-     *
-     * @param cat
-     * @return
-     */
-    boolean isThereMessage(String cat);
-
-
-
     /**
      *
      * @param per
      * @return
      */
     boolean isThereMessage(Performative per);
-
-
 
     /**
      *
@@ -118,21 +77,10 @@ public interface RemoteMessageBox extends java.rmi.Remote{
      */
     boolean isThereMessage(AgentID age,Performative per);
 
-
-
-    /**
-     *
-     * @param age
-     * @param cat
-     * @param per
-     * @return
-     */
-    boolean isThereMessage(AgentID age,String cat,Performative per);
-
     /**
      * 
      * @param mex
      * @throws JAMMessageBoxException
      */
-    public void writeMessage(Message mex) throws JAMMessageBoxException;
+    public void writeMessage(Message mex) throws JAMMessageBoxException, InterruptedException;
 }

@@ -3,6 +3,7 @@ package Parte3;
 import Parte1.*;
 import Parte2.*;
 import java.rmi.RemoteException;
+import java.rmi.*;
 import eccezioni.*;
 
 /**
@@ -21,7 +22,6 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
         super(ow);
     }
 
-
     /**
      *
      * @param ow
@@ -38,11 +38,14 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @throws JAMMessageBoxException
      */
     @Override
-    synchronized public Message readMessage() throws JAMMessageBoxException{
+    public synchronized Message readMessage() throws JAMMessageBoxException, InterruptedException{
+        while(this.isBoxEmpty()){
+            wait();
+        }
+        notifyAll();
         return super.readMessage();
     }
 
-
     /**
      *
      * @param age
@@ -50,22 +53,23 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @throws JAMMessageBoxException
      */
     @Override
-    synchronized public Message readMessage(AgentID age) throws JAMMessageBoxException {
-        return super.readMessage(age);
+    public synchronized Message readMessage(AgentID age) throws InterruptedException {
+        boolean found = false;
+        Message m = new Message();
+        while(!found){
+            try{
+                while(this.isBoxEmpty()){
+                    wait();
+                }
+                m = super.readMessage(age);
+                found = true;
+                notifyAll();
+            }catch(JAMMessageBoxException e){
+                wait();
+            }
+        }
+        return m;
     }
-
-
-    /**
-     *
-     * @param cat
-     * @return
-     * @throws JAMMessageBoxException
-     */
-    @Override
-    synchronized public Message readMessage(String cat) throws JAMMessageBoxException {
-        return super.readMessage(cat);
-    }
-
 
     /**
      *
@@ -74,10 +78,23 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @throws JAMMessageBoxException
      */
     @Override
-    synchronized public Message readMessage(Performative per) throws JAMMessageBoxException {
-        return super.readMessage(per);
+    public synchronized Message readMessage(Performative per) throws InterruptedException {
+        boolean found = false;
+        Message m = new Message();
+        while(!found){
+            try{
+                while(this.isBoxEmpty()){
+                    wait();
+                }
+                m = super.readMessage(per);
+                found = true;
+                notifyAll();
+            }catch(JAMMessageBoxException e){
+                wait();
+            }
+        }
+        return m;
     }
-
 
     /**
      *
@@ -87,68 +104,53 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @throws JAMMessageBoxException
      */
     @Override
-    synchronized public Message readMessage(AgentID age,Performative per) throws JAMMessageBoxException {
-        return super.readMessage(age, per);
+    public synchronized Message readMessage(AgentID age,Performative per) throws InterruptedException {
+        boolean found = false;
+        Message m = new Message();
+        while(!found){
+            try{
+                while(this.isBoxEmpty()){
+                    wait();
+                }
+                m = super.readMessage(age, per);
+                found = true;
+                notifyAll();
+            }catch(JAMMessageBoxException e){
+                wait();
+            }
+        }
+        return m;
     }
-
 
     /**
      *
-     * @param age
-     * @param cat
-     * @param per
-     * @return
-     * @throws JAMMessageBoxException
-     */
-    @Override
-    synchronized public Message readMessage(AgentID age, String cat, Performative per) throws JAMMessageBoxException {
-        return super.readMessage(age, cat, per);
-    }
-
-
-    /**
-     *
      * @return
      */
     @Override
-    synchronized public boolean isThereMessage(){
+    public synchronized boolean isThereMessage(){
         return super.isThereMessage();
     }
 
-
     /**
      *
      * @param age
      * @return
      */
     @Override
-    synchronized public boolean isThereMessage(AgentID age){
+    public synchronized boolean isThereMessage(AgentID age){
         return super.isThereMessage(age);
     }
 
-
-    /**
-     *
-     * @param cat
-     * @return
-     */
-    @Override
-    synchronized public boolean isThereMessage(String cat){
-        return super.isThereMessage(cat);
-    }
-
-
     /**
      *
      * @param per
      * @return
      */
     @Override
-    synchronized public boolean isThereMessage(Performative per){
+    public synchronized boolean isThereMessage(Performative per){
         return super.isThereMessage(per);
     }
 
-
     /**
      *
      * @param age
@@ -156,21 +158,8 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @return
      */
     @Override
-    synchronized public boolean isThereMessage(AgentID age,Performative per){
+    public synchronized boolean isThereMessage(AgentID age,Performative per){
         return super.isThereMessage(age, per);
-    }
-
-
-    /**
-     * 
-     * @param age
-     * @param cat
-     * @param per
-     * @return
-     */
-    @Override
-    synchronized public boolean isThereMessage(AgentID age, String cat, Performative per){
-        return super.isThereMessage(age, cat, per);
     }
 
     /**
@@ -179,7 +168,11 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @throws JAMMessageBoxException
      */
     @Override
-    synchronized public void writeMessage(Message mex) throws JAMMessageBoxException{
+    public synchronized void writeMessage(Message mex) throws JAMMessageBoxException, InterruptedException{
+        while(this.box.size() == DEFAULT_MAX_MESSAGE){
+            wait();
+        }
+        notifyAll();
         super.writeMessage(mex);
     }
 }

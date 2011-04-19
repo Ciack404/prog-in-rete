@@ -37,17 +37,19 @@ public class ProvaMessageBoxNosync_001 {
 		Message mex7 = new Message(Performative.INFORM, "agente7", "agente8", agente7, agente8);
 		Message mex8 = new Message(Performative.REQUEST, "agente8", "agente1", agente8, agente1);
 
-		boxMessaggi1.writeMessage(mex1);
-		boxMessaggi1.writeMessage(mex2);
-		boxMessaggi1.writeMessage(mex3);
-		boxMessaggi1.writeMessage(mex4);
+		try{
+                    boxMessaggi1.writeMessage(mex1);
+                    boxMessaggi1.writeMessage(mex2);
+                    boxMessaggi1.writeMessage(mex3);
+                    boxMessaggi1.writeMessage(mex4);
+                }catch(InterruptedException e){}
 
 		//legge mex1
 		System.out.println("stampa il primo messaggio in coda nella boxMessaggi1\n");
                 try{
 		stampa = boxMessaggi1.readMessage();
 		System.out.println(stampa + "\n");
-                }catch(JAMMessageBoxException jmbe){
+                }catch(Exception jmbe){
                     System.out.println("error in mex1 read test");
                 }
 
@@ -56,7 +58,7 @@ public class ProvaMessageBoxNosync_001 {
 		try{
                 stampa = boxMessaggi1.readMessage(agente2);
 		System.out.println(stampa + "\n");
-                }catch(JAMMessageBoxException jmbe){
+                }catch(Exception jmbe){
                     System.out.println("error in mex2 read test");
                 }
 
@@ -66,7 +68,7 @@ public class ProvaMessageBoxNosync_001 {
 		try{
                 stampa = boxMessaggi1.readMessage(Performative.REQUEST);
 		System.out.println(stampa + "\n");
-                }catch(JAMMessageBoxException jmbe){
+                }catch(Exception jmbe){
                     System.out.println("error in mex3 read test");
                 }
 
@@ -75,14 +77,16 @@ public class ProvaMessageBoxNosync_001 {
                 try{
 		stampa = boxMessaggi1.readMessage(agente4, Performative.INFORM);
 		System.out.println(stampa + "\n");
-                }catch(JAMMessageBoxException jmbe){
+                }catch(Exception jmbe){
                     System.out.println("error in mex4 read test");
                 }
 
-		boxMessaggi1.writeMessage(mex5);
-		boxMessaggi1.writeMessage(mex6);
-		boxMessaggi1.writeMessage(mex7);
-		boxMessaggi1.writeMessage(mex8);
+                try{
+                    boxMessaggi1.writeMessage(mex5);
+                    boxMessaggi1.writeMessage(mex6);
+                    boxMessaggi1.writeMessage(mex7);
+                    boxMessaggi1.writeMessage(mex8);
+                }catch(InterruptedException e){}
 
 		//legge mex5
 		System.out.print("1) primo messaggio in coda trovato ?  ");

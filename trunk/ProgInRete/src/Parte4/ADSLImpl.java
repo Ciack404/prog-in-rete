@@ -46,7 +46,7 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
      * @throws JAMADSLException
      * @throws RemoteException
      */
-    synchronized public List<RemoteMessageBox> getRemoteMessageBox(AgentID agentID) throws JAMADSLException, RemoteException{
+    public synchronized List<RemoteMessageBox> getRemoteMessageBox(AgentID agentID) throws JAMADSLException, RemoteException{
         if(this.messageBoxes.isEmpty())   throw new JAMADSLException();
         else{
             List<RemoteMessageBox> elenco = new LinkedList<RemoteMessageBox>();
@@ -63,7 +63,7 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
      * @throws JAMADSLException
      * @throws RemoteException
      */
-    synchronized public void insertRemoteMessageBox(RemoteMessageBox messageBox) throws JAMADSLException, RemoteException{
+    public synchronized void insertRemoteMessageBox(RemoteMessageBox messageBox) throws JAMADSLException, RemoteException{
         if(this.messageBoxes.contains(messageBox))    throw new JAMADSLException();
         else{
             this.messageBoxes.add(messageBox);
@@ -76,7 +76,7 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
      * @throws JAMADSLException
      * @throws RemoteException
      */
-    synchronized public void removeRemoteMessageBox(AgentID agentID) throws JAMADSLException, RemoteException{
+    public synchronized void removeRemoteMessageBox(AgentID agentID) throws JAMADSLException, RemoteException{
         if(this.messageBoxes.isEmpty())    throw new JAMADSLException();
         else{
             for(RemoteMessageBox box:this.messageBoxes){

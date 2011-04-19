@@ -13,8 +13,8 @@ import eccezioni.*;
  */
 public class MessageBoxNoSync extends UnicastRemoteObject {
     private PersonalAgentID owner;
-    private LinkedList<Message> box;
-    private final int maxMessaggi;
+    protected LinkedList<Message> box;
+    protected final int maxMessaggi;
     protected int DEFAULT_MAX_MESSAGE = 10;
 
     /**
@@ -29,7 +29,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
     }
 
     /**
-     *
+     *InterruptedException
      * @param ow
      * @param max
      * @throws RemoteException
@@ -61,7 +61,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      * @return
      * @throws JAMMessageBoxException
      */
-    public Message readMessage() throws JAMMessageBoxException {
+    public Message readMessage() throws JAMMessageBoxException, InterruptedException {
         if(!this.isBoxEmpty())    return this.box.removeFirst();
         else throw new JAMMessageBoxException();
     }
@@ -72,7 +72,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      * @return
      * @throws JAMMessageBoxException
      */
-    public Message readMessage(AgentID age) throws JAMMessageBoxException {
+    public Message readMessage(AgentID age) throws JAMMessageBoxException, InterruptedException {
         if(!this.isBoxEmpty()){
             boolean notFound = true;
             int i = 0;
@@ -88,33 +88,12 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
     }
 
     /**
-     * lettura del primo messaggio in coda inviato da un agente appartenente ad una certa categoria di agenti
-     * @param cat
-     * @return
-     * @throws JAMMessageBoxException
-     */
-    public Message readMessage(String cat) throws JAMMessageBoxException {
-        if(!this.isBoxEmpty()){
-            boolean notFound = true;
-            int i = 0;
-            int len = this.box.size();
-            while(notFound && i<len){
-                if(this.box.get(i).getSender().getCategory().equals(cat))    notFound=false;
-                else    i++;
-            }
-            if(notFound)    throw new JAMMessageBoxException();
-            else return this.box.remove(i);
-        }
-        else throw new JAMMessageBoxException();
-    }
-
-    /**
      * lettura del primo messaggio in coda corrispondente ad una certa performativa
      * @param per
      * @return
      * @throws JAMMessageBoxException
      */
-    public Message readMessage(Performative per) throws JAMMessageBoxException {
+    public Message readMessage(Performative per) throws JAMMessageBoxException, InterruptedException {
         if(!this.isBoxEmpty()){
             boolean notFound = true;
             int i = 0;
@@ -136,36 +115,13 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      * @return
      * @throws JAMMessageBoxException
      */
-    public Message readMessage(AgentID age,Performative per) throws JAMMessageBoxException {
+    public Message readMessage(AgentID age,Performative per) throws JAMMessageBoxException, InterruptedException {
         if(!this.isBoxEmpty()){
             boolean notFound = true;
             int i = 0;
             int len = this.box.size();
             while(notFound && i<len){
                 if(this.box.get(i).getSender().equals(age) && this.box.get(i).getPerformative().equals(per))    notFound=false;
-                else    i++;
-            }
-            if(notFound)    throw new JAMMessageBoxException();
-            else return this.box.remove(i);
-        }
-        else throw new JAMMessageBoxException();
-    }
-
-    /**
-     * lettura del primo messaggio in coda inviato da un agente appartenente ad una certa categoria di agenti e corrispondente ad una certa performativa
-     * @param age
-     * @param cat
-     * @param per
-     * @return
-     * @throws JAMMessageBoxException
-     */
-    public Message readMessage(AgentID age, String cat, Performative per) throws JAMMessageBoxException {
-        if(!this.isBoxEmpty()){
-            boolean notFound = true;
-            int i = 0;
-            int len = this.box.size();
-            while(notFound && i<len){
-                if(this.box.get(i).getSender().equals(age) && this.box.get(i).getPerformative().equals(per) && this.box.get(i).getSender().getCategory().equals(cat))    notFound=false;
                 else    i++;
             }
             if(notFound)    throw new JAMMessageBoxException();
@@ -296,7 +252,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      * Metodo che inserisce in coda alla casella il messaggio passato come parametro
      * @param mex
      */
-    public void writeMessage(Message mex) throws JAMMessageBoxException{
+    public void writeMessage(Message mex) throws JAMMessageBoxException, InterruptedException{
         if(this.box.size() < this.maxMessaggi)    this.box.add(mex);
         else throw new JAMMessageBoxException();
     }
