@@ -137,7 +137,7 @@ public abstract class JAMAgent {
      * @return
      * @throws JAMMessageBoxException
      */
-    public Message receive() throws JAMMessageBoxException{
+    public Message receive() throws JAMMessageBoxException, InterruptedException{
         return this.myMessageBox.readMessage();
     }
 
@@ -147,18 +147,8 @@ public abstract class JAMAgent {
      * @return
      * @throws JAMMessageBoxException
      */
-    public Message receive(AgentID age) throws JAMMessageBoxException{
+    public Message receive(AgentID age) throws InterruptedException{
         return this.myMessageBox.readMessage(age);
-    }
-
-    /**
-     *
-     * @param cat
-     * @return
-     * @throws JAMMessageBoxException
-     */
-    public Message receive(String cat) throws JAMMessageBoxException{
-        return this.myMessageBox.readMessage(cat);
     }
 
     /**
@@ -167,7 +157,7 @@ public abstract class JAMAgent {
      * @return
      * @throws JAMMessageBoxException
      */
-    public Message receive(Performative per) throws JAMMessageBoxException{
+    public Message receive(Performative per) throws InterruptedException{
         return this.myMessageBox.readMessage(per);
     }
 
@@ -178,20 +168,8 @@ public abstract class JAMAgent {
      * @return
      * @throws JAMMessageBoxException
      */
-    public Message receive(AgentID age,Performative per) throws JAMMessageBoxException{
+    public Message receive(AgentID age,Performative per) throws InterruptedException{
         return this.myMessageBox.readMessage(age, per);
-    }
-
-    /**
-     *
-     * @param age
-     * @param cat
-     * @param per
-     * @return
-     * @throws JAMMessageBoxException
-     */
-    public Message receive(AgentID age, String cat, Performative per) throws JAMMessageBoxException{
-        return this.myMessageBox.readMessage(age, cat, per);
     }
 
     /**
@@ -202,7 +180,7 @@ public abstract class JAMAgent {
      * @throws RemoteException
      * @throws JAMMessageBoxException
      */
-    public void send(Message mex, ADSL adsl) throws JAMADSLException, RemoteException, JAMMessageBoxException{
+    public void send(Message mex, ADSL adsl) throws JAMADSLException, RemoteException, JAMMessageBoxException, InterruptedException{
         AgentID rec = mex.getReceiver();
         List<RemoteMessageBox> bo = adsl.getRemoteMessageBox(rec);
         for(RemoteMessageBox box:bo){
