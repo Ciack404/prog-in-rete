@@ -12,7 +12,6 @@ public class CategoryAgentID extends GenericAgentID{
      * @param cat Categoria dell`agente
      */
     public CategoryAgentID(String cat) {
-        this.name = "NONAME";
         this.category = cat;
     }
 

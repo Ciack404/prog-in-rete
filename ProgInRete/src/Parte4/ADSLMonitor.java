@@ -15,15 +15,5 @@ public class ADSLMonitor {
 
     }
 
-    void startRMIRegistry(){
-
-    }
-
-    void startADSL(){
-
-    }
-
-    void stopADSL(){
-
-    }
+    
 }
