@@ -53,7 +53,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      * @return
      */
     public boolean isBoxEmpty(){
-        return this.box.isEmpty();
+        return this.box.size() == 0;
     }
 
     /**

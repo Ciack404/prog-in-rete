@@ -3,6 +3,7 @@ package Parte4;
 import Parte1.*;
 import Parte3.*;
 import eccezioni.*;
+import java.rmi.*;
 import java.rmi.RemoteException;
 import java.rmi.server.*;
 import java.util.*;
@@ -13,9 +14,10 @@ import java.util.*;
  * @version 1.0
  */
 public class ADSLImpl extends UnicastRemoteObject implements ADSL{
-    private List<RemoteMessageBox> messageBoxes;
-    private int port;
-    private String name;
+    public static List<RemoteMessageBox> messageBoxes;
+    String ip;
+    int port;
+    String name;
 
     /**
      * 
@@ -23,6 +25,7 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
      */
     public ADSLImpl() throws RemoteException{
         this.messageBoxes = new LinkedList<RemoteMessageBox>();
+        this.ip = "127.0.0.1";
         this.port = 1099;
         this.name = "ADSL";
     }
@@ -33,8 +36,9 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
      * @param n
      * @throws RemoteException
      */
-    public ADSLImpl(int p, String n) throws RemoteException{
+    public ADSLImpl(String ip, int p, String n) throws RemoteException{
         this.messageBoxes = new LinkedList<RemoteMessageBox>();
+        this.ip = ip;
         this.name = n;
         this.port = p;
     }
@@ -84,15 +88,41 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
                     this.messageBoxes.remove(box);
                 }
             }
-            /*int i=0;
-            int len=this.messageBoxes.size();
-            while(i<len){
-                if(messageBoxes.get(i).getOwner().equals(agentID)){
-                    this.messageBoxes.remove(i);
-                    i=len;
-                }
-                else i++;
-            }*/
+        }
+    }
+
+    /**
+     * 
+     */
+    void startRMIRegistry(){
+        try {
+            java.rmi.registry.LocateRegistry.createRegistry(port);
+            //notifyObservers("Creata ADSL: "+"  rmi://"+ip+":"+port+"/"+ name);
+        }catch(Exception e){
+            //notifyObservers("adsl non creata");
+        }
+    }
+
+    /**
+     *
+     */
+    void startADSL(){
+        try {
+            Naming.rebind("rmi://"+ip+":"+port+"/"+name,this);
+            //notifyObservers("\n agganciata la ADSL");
+        }catch(Exception e){
+            //notifyObservers("fallito in bind");
+        }
+    }
+
+    /**
+     * 
+     */
+    void stopADSL(){
+        try {
+            Naming.unbind("rmi://"+ip+":"+port+"/"+name);
+        }catch(Exception e){
+            //notifyObservers("fallito l' unbind");
         }
     }
 }
