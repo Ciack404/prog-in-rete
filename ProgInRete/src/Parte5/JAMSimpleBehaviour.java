@@ -7,7 +7,7 @@ import eccezioni.*;
  * @author Francesco Alisetta, Mattia Camusso
  * @version 1.0
  */
-public class JAMSimpleBehaviour extends JAMBehaviour {
+public abstract class JAMSimpleBehaviour extends JAMBehaviour {
 
     public JAMSimpleBehaviour(JAMAgent age){
         super(age);
@@ -33,23 +33,17 @@ public class JAMSimpleBehaviour extends JAMBehaviour {
      *
      * @throws JAMBehaviourInterruptedException
      */
-    public void action() throws JAMBehaviourInterruptedException {
-
-    }
+    public abstract void action() throws JAMBehaviourInterruptedException;
 
     /**
      *
      * @throws JAMBehaviourInterruptedException
      */
-    public void setup() throws JAMBehaviourInterruptedException {
-
-    }
+    public abstract void setup() throws JAMBehaviourInterruptedException;
 
     /**
      *
      * @throws JAMBehaviourInterruptedException
      */
-    public void dispose() throws JAMBehaviourInterruptedException {
-
-    }
+    public abstract void dispose() throws JAMBehaviourInterruptedException;
 }
