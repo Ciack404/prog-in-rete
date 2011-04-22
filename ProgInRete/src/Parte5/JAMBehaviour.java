@@ -10,6 +10,7 @@ import eccezioni.*;
 public abstract class JAMBehaviour implements Runnable{
     private boolean done;
     private Thread myThread;
+    private boolean running;
     protected JAMAgent myAgent;
 
     public JAMBehaviour(JAMAgent agent){
@@ -24,6 +25,14 @@ public abstract class JAMBehaviour implements Runnable{
 
     public boolean isDone(){
         return this.done;
+    }
+
+    public void setDone(boolean done){
+        this.done = done;
+    }
+
+    public void setRunning(boolean run){
+        this.running = run;
     }
 
     public void setMyThread(Thread myThread){
