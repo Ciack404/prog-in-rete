@@ -59,6 +59,7 @@ public abstract class JAMAgent {
     public void init(){
         try{
             this.adsl = (ADSL)Naming.lookup("rmi://"+this.ip+":"+this.port+"/"+this.name);
+            adsl.insertRemoteMessageBox(myMessageBox);
         }catch(Exception e){
             System.out.println("Impossibile effettuare la lookup su ADSL");
         }
@@ -95,15 +96,6 @@ public abstract class JAMAgent {
 
     /**
      *
-     * @param cat
-     * @return
-     */
-    public boolean isThereMessage(String cat){
-        return this.myMessageBox.isThereMessage(cat);
-    }
-
-    /**
-     *
      * @param per
      * @return
      */
@@ -119,17 +111,6 @@ public abstract class JAMAgent {
      */
     public boolean isThereMessage(AgentID age,Performative per){
         return this.myMessageBox.isThereMessage(age,per);
-    }
-
-    /**
-     *
-     * @param age
-     * @param cat
-     * @param per
-     * @return
-     */
-    public boolean isThereMessage(AgentID age, String cat, Performative per){
-        return this.myMessageBox.isThereMessage(age,cat,per);
     }
 
     /**
@@ -197,6 +178,13 @@ public abstract class JAMAgent {
     }
 
     void start(){
-
+        Thread t;
+        for(JAMBehaviour be : this.behaviours){
+            t = new Thread(be);
+	    be.setDone(false);
+            be.setMyThread(t);
+            t.start();
+	    be.setRunning(true);
+        }
     }
 }

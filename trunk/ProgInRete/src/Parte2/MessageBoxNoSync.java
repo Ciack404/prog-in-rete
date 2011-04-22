@@ -162,27 +162,6 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
 
     /**
      *
-     * @param cat
-     * @return
-     * @throws JAMMessageBoxExceptgetBox()ion
-     */
-    public boolean isThereMessage(String cat){
-        boolean found = false;
-        if(!this.isBoxEmpty()){
-            int i = 0;
-            int len = this.box.size();
-            while(!found && i<len){
-                if(this.box.get(i).getSender().getCategory().equals(cat)){
-                    found=true;
-                }
-                else    i++;
-            }
-        }
-        return found;
-    }
-
-    /**
-     *
      * @param per
      * @return
      * @throws JAMMessageBoxException
@@ -216,30 +195,6 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
             int len = this.box.size();
             while(!found && i<len){
                 if(this.box.get(i).getSender().equals(age) && this.box.get(i).getPerformative().equals(per)){
-                    found=true;
-                }
-                else    i++;
-            }
-        }
-        return found;
-    }
-
-    /**
-     *
-     * @param age
-     * @param catovvio, se manca anche solo una risposta lasciamo perdere.
-
-     * @param per
-     * @return
-     * @throws JAMMessageBoxException
-     */
-    public boolean isThereMessage(AgentID age, String cat, Performative per){
-        boolean found = false;
-        if(!this.isBoxEmpty()){
-            int i = 0;
-            int len = this.box.size();
-            while(!found && i<len){
-                if(this.box.get(i).getSender().equals(age) && this.box.get(i).getPerformative().equals(per) && this.box.get(i).getSender().getCategory().equals(cat)){
                     found=true;
                 }
                 else    i++;
