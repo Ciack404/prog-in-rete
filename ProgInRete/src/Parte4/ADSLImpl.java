@@ -18,6 +18,7 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
     String ip;
     int port;
     String name;
+    private static List<ADSLMonitor> observers;
 
     /**
      * 
@@ -123,6 +124,32 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
             Naming.unbind("rmi://"+ip+":"+port+"/"+name);
         }catch(Exception e){
             //notifyObservers("fallito l' unbind");
+        }
+    }
+
+    /**
+     * 
+     * @param m
+     */
+    public void addObserver(ADSLMonitor m){
+       observers.add(m);
+    }
+
+    /**
+     *
+     * @param m
+     */
+    public void removeObserver(ADSLMonitor m){
+       observers.remove(m);
+    }
+
+    /**
+     *
+     * @param s
+     */
+    public void notifyObservers(String s){
+        for(ADSLMonitor m: observers){
+            m.updateViewMonitor(s);
         }
     }
 }
