@@ -1,6 +1,6 @@
 package JAM;
 
-import java.rmi.RemoteException;
+import java.rmi.*;
 import java.util.List;
 
 /**
@@ -8,7 +8,7 @@ import java.util.List;
  * @author Francesco Alisetta, Mattia Camusso
  * @version 1.0
  */
-public interface ADSL extends java.rmi.Remote{
+public interface ADSL extends Remote{
 
     /**
      * 
