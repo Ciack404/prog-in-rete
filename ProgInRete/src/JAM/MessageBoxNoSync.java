@@ -1,10 +1,8 @@
 package JAM;
 
-import Parte1.*;
 import java.util.LinkedList;
 import java.rmi.RemoteException;
 import java.rmi.server.*;
-import eccezioni.*;
 
 /**
  * Class MessageBoxNoSync

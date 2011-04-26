@@ -1,10 +1,7 @@
 package JAM;
 
-import Parte1.*;
-import Parte2.*;
 import java.rmi.RemoteException;
 import java.rmi.*;
-import eccezioni.*;
 
 /**
  * Class MessageBoxNoSync

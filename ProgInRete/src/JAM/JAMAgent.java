@@ -1,7 +1,6 @@
 package JAM;
 
 import java.util.List;
-import eccezioni.*;
 import java.rmi.*;
 
 

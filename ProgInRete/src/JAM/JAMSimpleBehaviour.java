@@ -1,7 +1,4 @@
 package JAM;
-
-import eccezioni.*;
-
 /**
  * Class MessageBoxNoSync
  * @author Francesco Alisetta, Mattia Camusso
