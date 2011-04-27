@@ -1,7 +1,7 @@
 package JAM;
 
 /**
- * Class MessageBoxNoSync
+ * Class RemoteMessageBox
  * @author Francesco Alisetta, Mattia Camusso
  * @version 1.0
  */
@@ -11,14 +11,14 @@ public interface RemoteMessageBox extends java.rmi.Remote{
      * 
      * @return
      */
-    PersonalAgentID getOwner();
+    public PersonalAgentID getOwner();
 
     /**
      * 
      * @return
      * @throws JAMMessageBoxException
      */
-    Message readMessage() throws JAMMessageBoxException, InterruptedException;
+    public Message readMessage() throws JAMMessageBoxException, InterruptedException;
 
     /**
      *
@@ -26,7 +26,7 @@ public interface RemoteMessageBox extends java.rmi.Remote{
      * @return
      * @throws JAMMessageBoxException
      */
-    Message readMessage(AgentID age) throws JAMMessageBoxException, InterruptedException;
+    public Message readMessage(AgentID age) throws JAMMessageBoxException, InterruptedException;
 
     /**
      *
@@ -34,7 +34,7 @@ public interface RemoteMessageBox extends java.rmi.Remote{
      * @return
      * @throws JAMMessageBoxException
      */
-    Message readMessage(Performative per) throws JAMMessageBoxException, InterruptedException;
+    public Message readMessage(Performative per) throws JAMMessageBoxException, InterruptedException;
 
     /**
      *
@@ -43,27 +43,27 @@ public interface RemoteMessageBox extends java.rmi.Remote{
      * @return
      * @throws JAMMessageBoxException
      */
-    Message readMessage(AgentID age,Performative per) throws JAMMessageBoxException, InterruptedException;
+    public Message readMessage(AgentID age,Performative per) throws JAMMessageBoxException, InterruptedException;
 
     /**
      *
      * @return
      */
-    boolean isThereMessage();
+    public boolean isThereMessage();
 
     /**
      *
      * @param age
      * @return
      */
-    boolean isThereMessage(AgentID age);
+    public boolean isThereMessage(AgentID age);
 
     /**
      *
      * @param per
      * @return
      */
-    boolean isThereMessage(Performative per);
+    public boolean isThereMessage(Performative per);
 
     /**
      *
@@ -71,7 +71,7 @@ public interface RemoteMessageBox extends java.rmi.Remote{
      * @param per
      * @return
      */
-    boolean isThereMessage(AgentID age,Performative per);
+    public boolean isThereMessage(AgentID age,Performative per);
 
     /**
      * 

@@ -6,7 +6,7 @@ import java.rmi.server.*;
 import java.util.*;
 
 /**
- * Class MessageBoxNoSync
+ * Class ADSLImpl
  * @author Francesco Alisetta, Mattia Camusso
  * @version 1.0
  */
