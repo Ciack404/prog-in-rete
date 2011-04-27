@@ -1,6 +1,5 @@
 package JAM;
 
-import java.rmi.RemoteException;
 import java.rmi.*;
 
 /**

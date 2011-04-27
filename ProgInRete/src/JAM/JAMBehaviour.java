@@ -1,7 +1,7 @@
 package JAM;
 
 /**
- * Class MessageBoxNoSync
+ * Class JAMBehaviour
  * @author Francesco Alisetta, Mattia Camusso
  * @version 1.0
  */
