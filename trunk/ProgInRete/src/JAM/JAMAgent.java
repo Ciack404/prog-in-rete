@@ -7,7 +7,7 @@ import java.net.MalformedURLException;
 
 
 /**
- * Class MessageBoxNoSync
+ * Class JAMAgent
  * @author Francesco Alisetta, Mattia Camusso
  * @version 1.0
  */
