@@ -35,12 +35,22 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @throws JAMMessageBoxException
      */
     @Override
-    public synchronized Message readMessage() throws JAMMessageBoxException, InterruptedException{
-        while(this.isBoxEmpty()){
-            wait();
+    public synchronized Message readMessage() throws InterruptedException{
+        boolean found = false;
+        Message m = new Message();
+        while(!found){
+            try{
+                while(this.isBoxEmpty()){
+                    wait();
+                }
+                m = super.readMessage();
+                found = true;
+                notifyAll();
+            }catch(JAMMessageBoxException e){
+                wait();
+            }
         }
-        notifyAll();
-        return super.readMessage();
+        return m;
     }
 
     /**

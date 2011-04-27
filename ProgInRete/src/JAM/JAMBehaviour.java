@@ -48,4 +48,20 @@ public abstract class JAMBehaviour implements Runnable{
     public abstract void setup() throws JAMBehaviourInterruptedException;
 
     public abstract void dispose() throws JAMBehaviourInterruptedException;
+
+    public void run(){
+        try{
+            setup();
+	    action();
+        }catch(JAMBehaviourInterruptedException err){
+	    System.out.println(err);
+	}finally{
+	    try{
+	        dispose();
+	    } catch(JAMBehaviourInterruptedException err){
+	
+	          System.out.println(err);
+	    }
+	}
+     }
 }

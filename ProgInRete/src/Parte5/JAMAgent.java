@@ -55,6 +55,14 @@ public abstract class JAMAgent {
 
     /**
      * 
+     * @return
+     */
+    public PersonalAgentID getMyID(){
+        return this.myID;
+    }
+
+    /**
+     * 
      */
     public void init(){
         try{

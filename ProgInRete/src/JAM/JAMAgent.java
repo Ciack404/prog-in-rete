@@ -1,7 +1,9 @@
 package JAM;
 
-import java.util.List;
+import java.util.*;
 import java.rmi.*;
+import java.rmi.server.*;
+import java.net.MalformedURLException;
 
 
 /**
@@ -9,7 +11,7 @@ import java.rmi.*;
  * @author Francesco Alisetta, Mattia Camusso
  * @version 1.0
  */
-public abstract class JAMAgent {
+public abstract class JAMAgent extends Observable{
     private MessageBox myMessageBox;
     private PersonalAgentID myID;
     private ADSL adsl;
@@ -26,13 +28,17 @@ public abstract class JAMAgent {
      * @param port
      * @throws RemoteException
      */
-    public JAMAgent(PersonalAgentID agentID, String ip, String name, int port) throws RemoteException{
-        this.myMessageBox = new MessageBox(agentID);
-        this.myID = agentID;
-        this.adsl = new ADSLImpl();
-        this.name = name;
-        this.ip = ip;
-        this.port = port;
+    public JAMAgent(PersonalAgentID agentID, String ip, String name, int port) throws JAMADSLException{
+        try{
+            this.myMessageBox = new MessageBox(agentID);
+            this.myID = agentID;
+            this.adsl = new ADSLImpl();
+            this.name = name;
+            this.ip = ip;
+            this.port = port;
+        }catch(RemoteException e){
+            throw new JAMADSLException(e);
+        }
     }
 
     /**
@@ -40,13 +46,25 @@ public abstract class JAMAgent {
      * @param agentID
      * @throws RemoteException
      */
-    public JAMAgent(PersonalAgentID agentID) throws RemoteException{
-        this.myMessageBox = new MessageBox(agentID);
-        this.myID = agentID;
-        this.adsl = new ADSLImpl();
-        this.name = agentID.getName();
-        this.ip = "127.0.0.1";
-        this.port = 1099;
+    public JAMAgent(PersonalAgentID agentID) throws JAMADSLException{
+        try{
+            this.myMessageBox = new MessageBox(agentID);
+            this.myID = agentID;
+            this.adsl = new ADSLImpl();
+            this.name = agentID.getName();
+            this.ip = "127.0.0.1";
+            this.port = 1099;
+        }catch(RemoteException e){
+            throw new JAMADSLException(e);
+        }
+    }
+
+     /**
+     *
+     * @return
+     */
+    public PersonalAgentID getMyID(){
+        return this.myID;
     }
 
     /**
@@ -114,8 +132,12 @@ public abstract class JAMAgent {
      * @return
      * @throws JAMMessageBoxException
      */
-    public Message receive() throws JAMMessageBoxException, InterruptedException{
-        return this.myMessageBox.readMessage();
+    public Message receive() throws JAMIOException{
+        try{
+            return this.myMessageBox.readMessage();
+        }catch(InterruptedException e){
+            throw new JAMIOException();
+        }
     }
 
     /**
@@ -124,8 +146,12 @@ public abstract class JAMAgent {
      * @return
      * @throws JAMMessageBoxException
      */
-    public Message receive(AgentID age) throws InterruptedException{
-        return this.myMessageBox.readMessage(age);
+    public Message receive(AgentID age) throws JAMIOException{
+        try{
+            return this.myMessageBox.readMessage(age);
+        }catch(InterruptedException e){
+            throw new JAMIOException();
+        }
     }
 
     /**
@@ -134,8 +160,12 @@ public abstract class JAMAgent {
      * @return
      * @throws JAMMessageBoxException
      */
-    public Message receive(Performative per) throws InterruptedException{
-        return this.myMessageBox.readMessage(per);
+    public Message receive(Performative per) throws JAMIOException{
+        try{
+            return this.myMessageBox.readMessage(per);
+        }catch(InterruptedException e){
+            throw new JAMIOException();
+        }
     }
 
     /**
@@ -145,8 +175,12 @@ public abstract class JAMAgent {
      * @return
      * @throws JAMMessageBoxException
      */
-    public Message receive(AgentID age,Performative per) throws InterruptedException{
-        return this.myMessageBox.readMessage(age, per);
+    public Message receive(AgentID age,Performative per) throws JAMIOException{
+        try{
+            return this.myMessageBox.readMessage(age, per);
+        }catch(InterruptedException e){
+            throw new JAMIOException();
+        }
     }
 
     /**
@@ -157,11 +191,19 @@ public abstract class JAMAgent {
      * @throws RemoteException
      * @throws JAMMessageBoxException
      */
-    public void send(Message mex, ADSL adsl) throws JAMADSLException, RemoteException, JAMMessageBoxException, InterruptedException{
-        AgentID rec = mex.getReceiver();
-        List<RemoteMessageBox> bo = adsl.getRemoteMessageBox(rec);
-        for(RemoteMessageBox box:bo){
-                box.writeMessage(mex);
+    public void send(Message mex) throws JAMADSLException, JAMIOException{
+        try{
+            AgentID rec = mex.getReceiver();
+            List<RemoteMessageBox> bo = adsl.getRemoteMessageBox(rec);
+            for(RemoteMessageBox box:bo){
+                    box.writeMessage(mex);
+            }
+        }catch(RemoteException e){
+            throw new JAMADSLException(e);
+        }catch(InterruptedException ex){
+            throw new JAMIOException(ex);
+        }catch(JAMMessageBoxException exc){
+            throw new JAMIOException();
         }
     }
 
@@ -169,11 +211,11 @@ public abstract class JAMAgent {
      * 
      * @param behaviour
      */
-    void addBehaviour(JAMBehaviour behaviour) {
+    public void addBehaviour(JAMBehaviour behaviour) {
         this.behaviours.add(behaviour);
     }
 
-    void start(){
+    public void start(){
         Thread t;
         for(JAMBehaviour be : this.behaviours){
             t = new Thread(be);

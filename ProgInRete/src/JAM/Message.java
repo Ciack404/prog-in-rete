@@ -24,14 +24,28 @@ public class Message {
     }
 
     /**
-     * Costruttore che crea un Message contenente i parametri passati dal metodo richiamante
+     * 
+     * @param sen
+     * @param rec
      * @param per
      * @param con
-     * @param ex Argomenti opzionali
-     * @param sen oggetto Sender
-     * @param rec oggetto Receiver
      */
-    public Message(Performative per, String con, Object ex, AgentID sen, AgentID rec){
+    public Message(AgentID sen, AgentID rec, Performative per, String con){
+	this.performer = per;
+	this.content = con;
+	this.sender = sen;
+	this.receiver = rec;
+    }
+
+    /**
+     *
+     * @param sen
+     * @param rec
+     * @param per
+     * @param con
+     * @param ex
+     */
+    public Message(AgentID sen, AgentID rec, Performative per, String con, Object ex){
 	this.performer = per;
 	this.content = con;
 	this.extraArgument = ex;
