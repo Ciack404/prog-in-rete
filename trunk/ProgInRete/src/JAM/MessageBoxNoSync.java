@@ -27,7 +27,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
     }
 
     /**
-     *InterruptedException
+     *
      * @param ow
      * @param max
      * @throws RemoteException
