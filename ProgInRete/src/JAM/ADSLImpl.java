@@ -1,5 +1,6 @@
 package JAM;
 
+import java.io.*;
 import java.rmi.*;
 import java.rmi.RemoteException;
 import java.rmi.server.*;
@@ -53,7 +54,10 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
         else{
             List<RemoteMessageBox> elenco = new LinkedList<RemoteMessageBox>();
                 for(RemoteMessageBox box:this.messageBoxes){
-                    if(box.getOwner().equals(agentID))  elenco.add(box);
+                    if(box.getOwner().equals(agentID)){
+                        elenco.add(box);
+                        notifyObservers("Richiesto box "+box.getOwner().toString());
+                    }
                 }
             return elenco;
         }
@@ -69,11 +73,12 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
         if(this.messageBoxes.contains(messageBox))    throw new JAMADSLException();
         else{
             this.messageBoxes.add(messageBox);
+            notifyObservers("Iscrizione nuovo box per "+messageBox.getOwner().toString());
         }
     }
 
     /**
-     * 
+     * MODIFICARE CICLO: CONTINUA A CICLARE ANCHE DOPO AVER TROVATO L'ELEMENTO
      * @param agentID
      * @throws JAMADSLException
      * @throws RemoteException
@@ -84,6 +89,7 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
             for(RemoteMessageBox box:this.messageBoxes){
                 if(box.getOwner().equals(agentID)){
                     this.messageBoxes.remove(box);
+                    notifyObservers("Cancellato box "+box.getOwner().toString());
                 }
             }
         }
@@ -95,9 +101,9 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
     void startRMIRegistry(){
         try {
             java.rmi.registry.LocateRegistry.createRegistry(port);
-            //notifyObservers("Creata ADSL: "+"  rmi://"+ip+":"+port+"/"+ name);
+            notifyObservers("Creata ADSL: "+"  rmi://"+ip+":"+port+"/"+ name);
         }catch(Exception e){
-            //notifyObservers("adsl non creata");
+            notifyObservers("adsl non creata");
         }
     }
 
@@ -107,9 +113,9 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
     void startADSL(){
         try {
             Naming.rebind("rmi://"+ip+":"+port+"/"+name,this);
-            //notifyObservers("\n agganciata la ADSL");
+            notifyObservers("\n agganciata la ADSL");
         }catch(Exception e){
-            //notifyObservers("fallito in bind");
+            notifyObservers("fallito in bind");
         }
     }
 
@@ -120,7 +126,7 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
         try {
             Naming.unbind("rmi://"+ip+":"+port+"/"+name);
         }catch(Exception e){
-            //notifyObservers("fallito l' unbind");
+            notifyObservers("fallito l' unbind");
         }
     }
 

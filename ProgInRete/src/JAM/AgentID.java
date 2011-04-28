@@ -5,7 +5,7 @@ package JAM;
  * @author Francesco Alisetta, Mattia Camusso
  * @version 1.0
  */
-public interface AgentID {
+public interface AgentID extends java.io.Serializable{
 
     /**
      * Confronta due oggetti di tipo AgentID

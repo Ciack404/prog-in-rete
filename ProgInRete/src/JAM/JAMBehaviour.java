@@ -1,5 +1,10 @@
 package JAM;
 
+import java.io.*;
+import java.util.*;
+import java.rmi.*;
+import java.rmi.server.*;
+
 /**
  * Class JAMBehaviour
  * @author Francesco Alisetta, Mattia Camusso
