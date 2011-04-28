@@ -1,17 +1,22 @@
 package JAM;
 
+import java.io.*;
+import java.util.*;
+import java.rmi.*;
+import java.rmi.server.*;
+
 /**
  * Class RemoteMessageBox
  * @author Francesco Alisetta, Mattia Camusso
  * @version 1.0
  */
-public interface RemoteMessageBox extends java.rmi.Remote{
+public interface RemoteMessageBox extends Remote{
 
     /**
      * 
      * @return
      */
-    public PersonalAgentID getOwner();
+    public AgentID getOwner();
 
     /**
      * 

@@ -1,5 +1,7 @@
 package JAM;
 
+import java.io.*;
+
 /**
  * Class CategoryAgentID
  * @author Francesco Alisetta, Mattia Camusso

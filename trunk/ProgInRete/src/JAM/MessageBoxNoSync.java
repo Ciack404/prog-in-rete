@@ -2,6 +2,9 @@ package JAM;
 
 import java.util.LinkedList;
 import java.rmi.RemoteException;
+import java.io.*;
+import java.util.*;
+import java.rmi.*;
 import java.rmi.server.*;
 
 /**
@@ -42,7 +45,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      *
      * @return
      */
-    public PersonalAgentID getOwner(){
+    public AgentID getOwner(){
         return this.owner;
     }
 
