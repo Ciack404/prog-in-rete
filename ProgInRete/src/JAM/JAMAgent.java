@@ -37,6 +37,7 @@ public abstract class JAMAgent extends Observable{
             this.name = name;
             this.ip = ip;
             this.port = port;
+            this.behaviours = new java.util.LinkedList<JAMBehaviour>();
         }catch(RemoteException e){
             throw new JAMADSLException(e);
         }
@@ -55,6 +56,7 @@ public abstract class JAMAgent extends Observable{
             this.name = agentID.getName();
             this.ip = "127.0.0.1";
             this.port = 1099;
+            this.behaviours = new java.util.LinkedList<JAMBehaviour>();
         }catch(RemoteException e){
             throw new JAMADSLException(e);
         }
