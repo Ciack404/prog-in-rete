@@ -203,8 +203,6 @@ public abstract class JAMAgent extends Observable{
             throw new JAMADSLException(e);
         }catch(InterruptedException ex){
             throw new JAMIOException(ex);
-        }catch(JAMMessageBoxException exc){
-            throw new JAMIOException();
         }
     }
 

@@ -23,5 +23,5 @@ public interface RemoteMessageBox extends Remote{
      * @param mex
      * @throws JAMMessageBoxException
      */
-    public void writeMessage(Message mex) throws RemoteException, JAMMessageBoxException, InterruptedException;
+    public void writeMessage(Message mex) throws RemoteException, InterruptedException;
 }
