@@ -136,8 +136,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      * @return
      */
     public boolean isThereMessage(){
-        if(!this.isBoxEmpty())    return true;
-        else return false;
+        return !this.isBoxEmpty();
     }
 
     /**
