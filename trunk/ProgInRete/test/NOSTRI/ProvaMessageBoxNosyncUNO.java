@@ -2,11 +2,13 @@ package NOSTRI;
 
 import java.rmi.RemoteException;
 import JAM.*;
+import java.rmi.*;
+import java.rmi.server.*;
 
-public class ProvaMessageBoxNosync_001 {
+public class ProvaMessageBoxNosyncUNO{
 
-	public static void main(String[] args) throws JAMMessageBoxException, RemoteException{
-
+	public static void main(String[] args) {
+            
 		Message stampa;
 		boolean isThere;
 
@@ -22,7 +24,7 @@ public class ProvaMessageBoxNosync_001 {
 		AgentID agente7 = new PersonalAgentID("Mattia", "Camusso");
 		AgentID agente8 = new PersonalAgentID("Francesco", "Alisetta");
 
-
+                try{
         //create caselle di posta
 		MessageBoxNoSync boxMessaggi1 = new MessageBoxNoSync(proprietario);
 		//default capacity costruttore vuoto
@@ -37,12 +39,10 @@ public class ProvaMessageBoxNosync_001 {
 		Message mex7 = new Message(agente7, agente8, Performative.INFORM, "agente7", "agente8");
 		Message mex8 = new Message(agente8, agente1, Performative.REQUEST, "agente8", "agente1");
 
-		try{
                     boxMessaggi1.writeMessage(mex1);
                     boxMessaggi1.writeMessage(mex2);
                     boxMessaggi1.writeMessage(mex3);
                     boxMessaggi1.writeMessage(mex4);
-                }catch(InterruptedException e){}
 
 		//legge mex1
 		System.out.println("stampa il primo messaggio in coda nella boxMessaggi1\n");
@@ -86,7 +86,7 @@ public class ProvaMessageBoxNosync_001 {
                     boxMessaggi1.writeMessage(mex6);
                     boxMessaggi1.writeMessage(mex7);
                     boxMessaggi1.writeMessage(mex8);
-                }catch(InterruptedException e){}
+                }catch(InterruptedException e){}catch(JAMMessageBoxException ex){}
 
 		//legge mex5
 		System.out.print("1) primo messaggio in coda trovato ?  ");
@@ -111,11 +111,6 @@ public class ProvaMessageBoxNosync_001 {
 		System.out.print("4) primo messaggio in coda di un certo agente + performativa trovato ?  ");
 		isThere = boxMessaggi1.isThereMessage(agente8, Performative.REQUEST);
 		System.out.print(isThere + "\n");
-		System.out.print("\n");
-
-
-
+            }catch(Exception e){}
 	}//end main
-
-
 }//end class

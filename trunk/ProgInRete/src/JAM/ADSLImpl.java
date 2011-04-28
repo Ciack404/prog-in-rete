@@ -27,6 +27,7 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
         this.ip = "127.0.0.1";
         this.port = 1099;
         this.name = "ADSL";
+        this.observers = new LinkedList<ADSLMonitor>();
     }
 
     /**
@@ -40,6 +41,7 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
         this.ip = ip;
         this.name = n;
         this.port = p;
+        this.observers = new LinkedList<ADSLMonitor>();
     }
 
     /**
