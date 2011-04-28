@@ -165,14 +165,15 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @throws JAMMessageBoxException
      */
     @Override
-    public synchronized void writeMessage(Message mex) throws JAMMessageBoxException, InterruptedException{
+    public synchronized void writeMessage(Message mex) throws InterruptedException{
         boolean undone = true;
         while(undone){
-            if(this.box.size() == DEFAULT_MAX_MESSAGE)  wait();
-            else{
+            try{
                 super.writeMessage(mex);
                 undone = false;
                 notifyAll();
+            }catch(JAMMessageBoxException e){
+                wait();
             }
         }
     }
