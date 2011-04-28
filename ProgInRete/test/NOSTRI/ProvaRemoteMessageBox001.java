@@ -1,11 +1,7 @@
-import Parte1.*;
-import Parte2.*;
-import Parte3.*;
-import Parte4.*;
-import java.rmi.RemoteException;
+package NOSTRI;
+
+import JAM.*;
 import java.rmi.*;
-import java.rmi.server.*;
-import javax.naming.*;
 
 /**
  * Class MessageBoxNoSync

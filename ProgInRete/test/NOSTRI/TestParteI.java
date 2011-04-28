@@ -1,5 +1,7 @@
+package NOSTRI;
+
 import java.util.*;
-import Parte1.*;
+import JAM.*;
 
 public class TestParteI {
     public static void main(String[] args) {

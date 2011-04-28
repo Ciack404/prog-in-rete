@@ -1,7 +1,7 @@
+package NOSTRI;
+
 import java.rmi.RemoteException;
-import Parte1.*;
-import Parte2.*;
-import eccezioni.*;
+import JAM.*;
 
 public class ProvaMessageBoxNosync_002 {
 
@@ -28,14 +28,14 @@ public class ProvaMessageBoxNosync_002 {
 		//default capacity costruttore vuoto
 
 		//creati mex
-		Message mex1 = new Message(Performative.UNKNOWN, "agente1", "agente2", agente1, agente2);
-		Message mex2 = new Message(Performative.REQUEST, "agente2", "agente3", agente2, agente3);
-		Message mex3 = new Message(Performative.INFORM, "agente3", "agente4", agente3, agente4);
-		Message mex4 = new Message(Performative.INFORM, "agente4", "agente5", agente4, agente5);
-		Message mex5 = new Message(Performative.UNKNOWN, "agente5", "agente6", agente5, agente6);
-		Message mex6 = new Message(Performative.REQUEST, "agente6", "agente7", agente6, agente7);
-		Message mex7 = new Message(Performative.INFORM, "agente7", "agente5", agente7, agente5);
-		Message mex8 = new Message(Performative.REQUEST, "agente5", "agente1", agente5, agente1);
+		Message mex1 = new Message(agente1, agente2, Performative.UNKNOWN, "agente1", "agente2");
+		Message mex2 = new Message(agente2, agente3, Performative.REQUEST, "agente2", "agente3");
+		Message mex3 = new Message(agente3, agente4, Performative.INFORM, "agente3", "agente4");
+		Message mex4 = new Message(agente4, agente5, Performative.INFORM, "agente4", "agente5");
+		Message mex5 = new Message(agente5, agente6, Performative.UNKNOWN, "agente5", "agente6");
+		Message mex6 = new Message(agente6, agente7, Performative.REQUEST, "agente6", "agente7");
+		Message mex7 = new Message(agente7, agente5, Performative.INFORM, "agente7", "agente5");
+		Message mex8 = new Message(agente5, agente1, Performative.REQUEST, "agente5", "agente1");
 
 		try{
                     boxMessaggi1.writeMessage(mex1);
