@@ -19,7 +19,7 @@ public abstract class JAMAgent extends Observable{
     private String name;
     private String ip;
     private int port;
-    private java.util.LinkedList<JAMBehaviour> behaviours;
+    private LinkedList<JAMBehaviour> behaviours;
 
     /**
      *
@@ -33,11 +33,10 @@ public abstract class JAMAgent extends Observable{
         try{
             this.myMessageBox = new MessageBox(agentID);
             this.myID = agentID;
-            this.adsl = new ADSLImpl();
             this.name = name;
             this.ip = ip;
             this.port = port;
-            this.behaviours = new java.util.LinkedList<JAMBehaviour>();
+            this.behaviours = new LinkedList<JAMBehaviour>();
         }catch(RemoteException e){
             throw new JAMADSLException(e);
         }
@@ -52,11 +51,10 @@ public abstract class JAMAgent extends Observable{
         try{
             this.myMessageBox = new MessageBox(agentID);
             this.myID = agentID;
-            this.adsl = new ADSLImpl();
-            this.name = agentID.getName();
+            this.name = "ADSL";
             this.ip = "127.0.0.1";
             this.port = 1099;
-            this.behaviours = new java.util.LinkedList<JAMBehaviour>();
+            this.behaviours = new LinkedList<JAMBehaviour>();
         }catch(RemoteException e){
             throw new JAMADSLException(e);
         }
@@ -76,7 +74,7 @@ public abstract class JAMAgent extends Observable{
     public void init(){
         try{
             this.adsl = (ADSL)Naming.lookup("rmi://"+this.ip+":"+this.port+"/"+this.name);
-            adsl.insertRemoteMessageBox(myMessageBox);
+            this.adsl.insertRemoteMessageBox(myMessageBox);
         }catch(Exception e){
             System.out.println("Impossibile effettuare la lookup su ADSL");
         }
