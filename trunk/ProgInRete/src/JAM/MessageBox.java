@@ -42,9 +42,6 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
         Message m = new Message();
         while(!found){
             try{
-                while(this.isBoxEmpty()){
-                    wait();
-                }
                 m = super.readMessage();
                 found = true;
                 notifyAll();
@@ -67,9 +64,6 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
         Message m = new Message();
         while(!found){
             try{
-                while(this.isBoxEmpty()){
-                    wait();
-                }
                 m = super.readMessage(age);
                 found = true;
                 notifyAll();
@@ -92,9 +86,6 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
         Message m = new Message();
         while(!found){
             try{
-                while(this.isBoxEmpty()){
-                    wait();
-                }
                 m = super.readMessage(per);
                 found = true;
                 notifyAll();
@@ -118,9 +109,6 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
         Message m = new Message();
         while(!found){
             try{
-                while(this.isBoxEmpty()){
-                    wait();
-                }
                 m = super.readMessage(age, per);
                 found = true;
                 notifyAll();
