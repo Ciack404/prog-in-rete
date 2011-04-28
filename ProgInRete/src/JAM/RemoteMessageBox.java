@@ -16,72 +16,12 @@ public interface RemoteMessageBox extends Remote{
      * 
      * @return
      */
-    public AgentID getOwner();
-
-    /**
-     * 
-     * @return
-     * @throws JAMMessageBoxException
-     */
-    public Message readMessage() throws JAMMessageBoxException, InterruptedException;
-
-    /**
-     *
-     * @param age
-     * @return
-     * @throws JAMMessageBoxException
-     */
-    public Message readMessage(AgentID age) throws JAMMessageBoxException, InterruptedException;
-
-    /**
-     *
-     * @param per
-     * @return
-     * @throws JAMMessageBoxException
-     */
-    public Message readMessage(Performative per) throws JAMMessageBoxException, InterruptedException;
-
-    /**
-     *
-     * @param age
-     * @param per
-     * @return
-     * @throws JAMMessageBoxException
-     */
-    public Message readMessage(AgentID age,Performative per) throws JAMMessageBoxException, InterruptedException;
-
-    /**
-     *
-     * @return
-     */
-    public boolean isThereMessage();
-
-    /**
-     *
-     * @param age
-     * @return
-     */
-    public boolean isThereMessage(AgentID age);
-
-    /**
-     *
-     * @param per
-     * @return
-     */
-    public boolean isThereMessage(Performative per);
-
-    /**
-     *
-     * @param age
-     * @param per
-     * @return
-     */
-    public boolean isThereMessage(AgentID age,Performative per);
+    public AgentID getOwner() throws RemoteException;
 
     /**
      * 
      * @param mex
      * @throws JAMMessageBoxException
      */
-    public void writeMessage(Message mex) throws JAMMessageBoxException, InterruptedException;
+    public void writeMessage(Message mex) throws RemoteException, JAMMessageBoxException, InterruptedException;
 }
