@@ -112,5 +112,5 @@ public class ProvaMessageBoxNosyncUNO{
 		System.out.println(trovato);
                 System.out.println();
             }catch(Exception e){}
-	}//end main
-}//end class
+	}
+}
