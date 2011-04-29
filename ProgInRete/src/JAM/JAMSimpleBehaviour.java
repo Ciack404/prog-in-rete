@@ -16,7 +16,7 @@ public abstract class JAMSimpleBehaviour extends JAMBehaviour {
         super(age);
     }
 
-    public void run(){
+    /*public void run(){
         try{
             this.setup();
             this.action();
@@ -30,7 +30,7 @@ public abstract class JAMSimpleBehaviour extends JAMBehaviour {
                 System.out.println(err);
             }
         }
-    }
+    }*/
 
     /**
      *

@@ -34,6 +34,10 @@ public abstract class JAMBehaviour implements Runnable{
         this.done = done;
     }
 
+    public boolean isRunning(){
+        return this.running;
+    }
+
     public void setRunning(boolean run){
         this.running = run;
     }
@@ -45,7 +49,9 @@ public abstract class JAMBehaviour implements Runnable{
     public void sleep(long ms){
         try{
             this.myThread.sleep(ms);
-        }catch(InterruptedException e){}
+        }catch(InterruptedException e){
+            System.out.println(e);
+        }
     }
 
     public abstract void action() throws JAMBehaviourInterruptedException;
@@ -64,7 +70,6 @@ public abstract class JAMBehaviour implements Runnable{
 	    try{
 	        dispose();
 	    } catch(JAMBehaviourInterruptedException err){
-	
 	          System.out.println(err);
 	    }
 	}

@@ -71,13 +71,13 @@ public abstract class JAMAgent extends Observable{
     /**
      * 
      */
-    public void init(){
+    public void init() throws JAMADSLException{
         try{
             this.adsl = (ADSL)Naming.lookup("rmi://"+this.ip+":"+this.port+"/"+this.name);
             this.adsl.insertRemoteMessageBox(myMessageBox);
         }catch(Exception e){
-            System.out.println("Impossibile effettuare la lookup su ADSL");
-        }
+             throw new JAMADSLException(e);
+	}
     }
 
     /**
