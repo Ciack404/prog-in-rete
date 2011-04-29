@@ -165,7 +165,7 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
      * @throws JAMMessageBoxException
      */
     @Override
-    public synchronized void writeMessage(Message mex) throws InterruptedException{
+    public synchronized void writeMessage(Message mex) throws InterruptedException, RemoteException{
         boolean undone = true;
         while(undone){
             try{
