@@ -13,7 +13,7 @@ import java.rmi.server.*;
  * @version 1.0
  */
 public class MessageBoxNoSync extends UnicastRemoteObject {
-    private PersonalAgentID owner;
+    protected PersonalAgentID owner;
     protected LinkedList<Message> box;
     protected final int maxMessaggi;
     protected int DEFAULT_MAX_MESSAGE = 10;
