@@ -13,13 +13,13 @@ import java.net.MalformedURLException;
  * @version 1.0
  */
 public abstract class JAMAgent extends Observable{
-    private MessageBox myMessageBox;
+    public MessageBox myMessageBox;
     private PersonalAgentID myID;
-    private ADSL adsl;
+    public ADSL adsl;
     private String name;
     private String ip;
     private int port;
-    private LinkedList<JAMBehaviour> behaviours;
+    private List<JAMBehaviour> behaviours;
 
     /**
      *

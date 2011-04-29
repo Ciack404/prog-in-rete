@@ -11,10 +11,10 @@ import java.rmi.server.*;
  * @version 1.0
  */
 public abstract class JAMBehaviour implements Runnable{
-    private boolean done;
-    private Thread myThread;
-    private boolean running;
-    protected JAMAgent myAgent;
+    boolean done;
+    Thread myThread;
+    boolean running;
+    public JAMAgent myAgent;
 
     public JAMBehaviour(JAMAgent agent){
         this.myAgent = agent;

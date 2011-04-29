@@ -19,6 +19,7 @@ public class PersonalAgentID extends CategoryAgentID{
      */
     public PersonalAgentID(String na, String cat) {
         super(cat);
+        this.category = cat;
         this.name = na;
     }
 
