@@ -37,7 +37,7 @@ public class PersonalAgentID extends CategoryAgentID{
                 return true;
             else
                 return false;
-        } catch(ClassCastException err){
+        } catch(Exception err){
             return false;
 	}
     }

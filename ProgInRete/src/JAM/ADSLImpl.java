@@ -17,6 +17,7 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
     int port;
     String name;
     private static List<ADSLMonitor> observers;
+    ADSL adsl;
 
     /**
      * 
@@ -102,6 +103,7 @@ public class ADSLImpl extends UnicastRemoteObject implements ADSL{
      */
     void startRMIRegistry(){
         try {
+            adsl = this;
             java.rmi.registry.LocateRegistry.createRegistry(port);
             notifyObservers("Creata ADSL: "+"  rmi://"+ip+":"+port+"/"+ name);
         }catch(Exception e){

@@ -87,9 +87,6 @@ public abstract class JAMAgent extends Observable{
      */
     public void destroy() throws JAMADSLException, RemoteException {
         this.adsl.removeRemoteMessageBox(myID);
-        for(JAMBehaviour be:behaviours){
-            be.done();
-        }
     }
 
     /**

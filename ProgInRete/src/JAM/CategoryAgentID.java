@@ -1,6 +1,7 @@
 package JAM;
 
 import java.io.*;
+import java.util.*;
 
 /**
  * Class CategoryAgentID
@@ -32,7 +33,7 @@ public class CategoryAgentID extends GenericAgentID{
                 return true;
             else
                 return false;
-        } catch(ClassCastException err){
+        } catch(Exception err){
             return false;
 	}
     }

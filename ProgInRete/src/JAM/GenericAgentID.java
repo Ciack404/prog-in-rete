@@ -1,6 +1,7 @@
 package JAM;
 
 import java.io.*;
+import java.util.*;
 
 /**
  * Class GenericAgentID
@@ -31,7 +32,7 @@ public class GenericAgentID implements AgentID{
         try{
             GenericAgentID age = (GenericAgentID) agentID;
             return true;
-        }catch(ClassCastException err){
+        }catch(Exception err){
             return false;
         }
     }
