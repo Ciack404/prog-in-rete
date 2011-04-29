@@ -75,14 +75,14 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      */
     public Message readMessage(AgentID age) throws JAMMessageBoxException, InterruptedException {
         if(!this.isBoxEmpty()){
-            boolean notFound = true;
+            boolean found = false;
             int i = 0;
             int len = this.box.size();
-            while(notFound && i<len){
-                if(this.box.get(i).getSender().equals(age))    notFound=false;
+            while(!found && i<len){
+                if(this.box.get(i).getSender().equals(age))    found=true;
                 else    i++;
             }
-            if(notFound)    throw new JAMMessageBoxException();
+            if(!found)    throw new JAMMessageBoxException();
             else return this.box.remove(i);
         }
         else throw new JAMMessageBoxException();
@@ -96,14 +96,14 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      */
     public Message readMessage(Performative per) throws JAMMessageBoxException, InterruptedException {
         if(!this.isBoxEmpty()){
-            boolean notFound = true;
+            boolean found = false;
             int i = 0;
             int len = this.box.size();
-            while(notFound && i<len){
-                if(this.box.get(i).getPerformative().equals(per))    notFound=false;
+            while(!found && i<len){
+                if(this.box.get(i).getPerformative().equals(per))    found=true;
                 else    i++;
             }
-            if(notFound)    throw new JAMMessageBoxException();
+            if(!found)    throw new JAMMessageBoxException();
             else return this.box.remove(i);
         }
         else throw new JAMMessageBoxException();
@@ -118,14 +118,14 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      */
     public Message readMessage(AgentID age,Performative per) throws JAMMessageBoxException, InterruptedException {
         if(!this.isBoxEmpty()){
-            boolean notFound = true;
+            boolean found = false;
             int i = 0;
             int len = this.box.size();
-            while(notFound && i<len){
-                if(this.box.get(i).getSender().equals(age) && this.box.get(i).getPerformative().equals(per))    notFound=false;
+            while(!found && i<len){
+                if(this.box.get(i).getSender().equals(age) && this.box.get(i).getPerformative().equals(per))    found=true;
                 else    i++;
             }
-            if(notFound)    throw new JAMMessageBoxException();
+            if(!found)    throw new JAMMessageBoxException();
             else return this.box.remove(i);
         }
         else throw new JAMMessageBoxException();
@@ -151,9 +151,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
             int i = 0;
             int len = this.box.size();
             while(!found && i<len){
-                if(this.box.get(i).getSender().equals(age)){
-                    found=true;
-                }
+                if(this.box.get(i).getSender().equals(age))     found = true;
                 else    i++;
             }
         }
@@ -172,9 +170,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
             int i = 0;
             int len = this.box.size();
             while(!found && i<len){
-                if(this.box.get(i).getPerformative().equals(per)){
-                    found=true;
-                }
+                if(this.box.get(i).getPerformative().equals(per))   found=true;
                 else    i++;
             }
         }
@@ -194,9 +190,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
             int i = 0;
             int len = this.box.size();
             while(!found && i<len){
-                if(this.box.get(i).getSender().equals(age) && this.box.get(i).getPerformative().equals(per)){
-                    found=true;
-                }
+                if(this.box.get(i).getSender().equals(age) && this.box.get(i).getPerformative().equals(per))    found=true;
                 else    i++;
             }
         }
@@ -207,7 +201,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject {
      * Metodo che inserisce in coda alla casella il messaggio passato come parametro
      * @param mex
      */
-    public void writeMessage(Message mex) throws JAMMessageBoxException, InterruptedException{
+    public void writeMessage(Message mex) throws JAMMessageBoxException, InterruptedException, RemoteException{
         if(this.box.size() < this.maxMessaggi)    this.box.add(mex);
         else throw new JAMMessageBoxException();
     }

@@ -6,11 +6,10 @@ import java.rmi.*;
 import java.rmi.server.*;
 
 public class ProvaMessageBoxNosyncUNO{
-
 	public static void main(String[] args) {
             
 		Message stampa;
-		boolean isThere;
+		boolean trovato;
 
 		PersonalAgentID proprietario = new PersonalAgentID("mattia", "francesco");
 
@@ -24,7 +23,7 @@ public class ProvaMessageBoxNosyncUNO{
 		AgentID agente7 = new PersonalAgentID("Mattia", "Camusso");
 		AgentID agente8 = new PersonalAgentID("Francesco", "Alisetta");
 
-                try{
+             try{
         //create caselle di posta
 		MessageBoxNoSync boxMessaggi1 = new MessageBoxNoSync(proprietario);
 		//default capacity costruttore vuoto
@@ -90,27 +89,28 @@ public class ProvaMessageBoxNosyncUNO{
 
 		//legge mex5
 		System.out.print("1) primo messaggio in coda trovato ?  ");
-		isThere = boxMessaggi1.isThereMessage();
-		System.out.print(isThere+ "\n");
-		System.out.print("\n");
+		trovato = boxMessaggi1.isThereMessage();
+		System.out.println(trovato);
+		System.out.println();
 
 		//legge mex6
 		System.out.print("2) primo messaggio in coda di un certo agente trovato ?  ");
-		isThere = boxMessaggi1.isThereMessage(agente6);
-		System.out.print(isThere + "\n");
-		System.out.print("\n");
+		trovato = boxMessaggi1.isThereMessage(agente6);
+		System.out.println(trovato);
+		System.out.println();
 
 
 		//legge mex7
 		System.out.print("3) primo messaggio in coda di una certa performativa trovato ?  ");
-		isThere = boxMessaggi1.isThereMessage(Performative.INFORM);
-		System.out.print(isThere + "\n");
+		trovato = boxMessaggi1.isThereMessage(Performative.INFORM);
+		System.out.println(trovato);
 		System.out.print("\n");
 
 		//legge mex8
 		System.out.print("4) primo messaggio in coda di un certo agente + performativa trovato ?  ");
-		isThere = boxMessaggi1.isThereMessage(agente8, Performative.REQUEST);
-		System.out.print(isThere + "\n");
+		trovato = boxMessaggi1.isThereMessage(agente8, Performative.REQUEST);
+		System.out.println(trovato);
+                System.out.println();
             }catch(Exception e){}
 	}//end main
 }//end class

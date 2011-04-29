@@ -87,14 +87,14 @@ public class Message {
      * @return AgentID L'oggetto restituito
      */
     public AgentID getReceiver(){
-        return receiver;
+        return this.receiver;
     }
 
     /**
      *
      */
     public Performative getPerformative(){
-        return performer;
+        return this.performer;
     }
 
     /**
@@ -108,7 +108,7 @@ public class Message {
      *
      */
     public String getContent(){
-        return content;
+        return this.content;
     }
 
     /**
@@ -122,7 +122,7 @@ public class Message {
      *
      */
     public Object getExtraArgument(){
-	return extraArgument;
+	return this.extraArgument;
     }
 
     /**
