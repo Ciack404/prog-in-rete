@@ -19,7 +19,7 @@ public abstract class JAMAgent extends Observable{
     private String name;
     private String ip;
     private int port;
-    private List<JAMBehaviour> behaviours;
+    private List<JAMBehaviour> myBehaviours;
 
     /**
      *
@@ -36,7 +36,7 @@ public abstract class JAMAgent extends Observable{
             this.name = name;
             this.ip = ip;
             this.port = port;
-            this.behaviours = new LinkedList<JAMBehaviour>();
+            this.myBehaviours = new LinkedList<JAMBehaviour>();
         }catch(RemoteException e){
             throw new JAMADSLException(e);
         }
@@ -54,7 +54,7 @@ public abstract class JAMAgent extends Observable{
             this.name = "ADSL";
             this.ip = "127.0.0.1";
             this.port = 1099;
-            this.behaviours = new LinkedList<JAMBehaviour>();
+            this.myBehaviours = new LinkedList<JAMBehaviour>();
         }catch(RemoteException e){
             throw new JAMADSLException(e);
         }
@@ -208,12 +208,12 @@ public abstract class JAMAgent extends Observable{
      * @param behaviour
      */
     public void addBehaviour(JAMBehaviour behaviour) {
-        this.behaviours.add(behaviour);
+        this.myBehaviours.add(behaviour);
     }
 
     public void start(){
         Thread t;
-        for(JAMBehaviour be : this.behaviours){
+        for(JAMBehaviour be : this.myBehaviours){
             t = new Thread(be);
 	    be.setDone(false);
             be.setMyThread(t);

@@ -1,3 +1,5 @@
+// TOLTO IL METODO RUN: C'È GIÀ SIA IN WHILEBEHAVIOUR CHE IN SIMPLEBEHAVIOUR
+
 package JAM;
 
 import java.io.*;
@@ -46,11 +48,11 @@ public abstract class JAMBehaviour implements Runnable{
         this.myThread = myThread;
     }
 
-    public void sleep(long ms){
+    public void sleep(long ms) throws JAMBehaviourInterruptedException{
         try{
             this.myThread.sleep(ms);
         }catch(InterruptedException e){
-            System.out.println(e);
+            throw new JAMBehaviourInterruptedException();
         }
     }
 
@@ -60,7 +62,7 @@ public abstract class JAMBehaviour implements Runnable{
 
     public abstract void dispose() throws JAMBehaviourInterruptedException;
 
-    public void run(){
+    /*public void run(){
         try{
             setup();
 	    action();
@@ -73,5 +75,5 @@ public abstract class JAMBehaviour implements Runnable{
 	          System.out.println(err);
 	    }
 	}
-     }
+     }*/
 }
