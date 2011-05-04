@@ -40,6 +40,7 @@ public class Message {
 	this.content = con;
 	this.sender = sen;
 	this.receiver = rec;
+        this.extraArgument = new Object();
     }
 
     /**
@@ -137,6 +138,6 @@ public class Message {
      */
     @Override
     public String toString(){
-	return "Performativa: " + performer + "\nSender: " + sender.toString() + "\nReceiver: " + receiver.toString() + "\nContent: " + content + "\nExtraArgument: " + extraArgument.toString();
+        return "Performativa: " + performer + "\nSender: " + sender.toString() + "\nReceiver: " + receiver.toString() + "\nContent: " + content + "\nExtraArgument: " + extraArgument.toString();
     }
 }
